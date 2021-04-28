@@ -5,12 +5,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
 
     resources :carlistings, except: [:new, :edit] do
-      resources :reviews, only: [:show]
+      resources :reviews, except: [:new, :edit]
       resources :trips, only: [:show]
     end
-    resources :users do 
-      resource :reviews, only: [:create,:update]
-    end
+    resources :users, except: [:new, :edit]
     resource :session, only: [:new, :create, :destroy]
   end
   
