@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :trips, only: [:show]
     end
     resources :trips, only: [:index, :create]
+    resources :bookings, except: [:new, :edit]
     resources :users, except: [:new, :edit]
     resource :session, only: [:new, :create, :destroy]
   end
