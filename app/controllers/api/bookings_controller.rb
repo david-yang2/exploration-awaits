@@ -1,14 +1,18 @@
 class Api::BookingsController < ApplicationController
+
+    #GET    /api/bookings
     def index
         @bookings = Booking.all
     end
 
+    #GET    /api/bookings/:id
     def show
         @booking = Booking.find(params[:id])
     end
 
+    #POST   /api/bookings
     def create
-        @booking = Booking.create(booking_params)
+        @booking = Booking.new(booking_params)
         if @booking.save
             return
         else
@@ -16,6 +20,7 @@ class Api::BookingsController < ApplicationController
         end
     end
 
+    #PATCH  /api/bookings/:id
     def update
         @booking = Booking.find(params[:id])
 
@@ -26,6 +31,7 @@ class Api::BookingsController < ApplicationController
         end
     end
 
+    #DELETE /api/bookings/:id
     def destroy
         @booking = Booking.find(params[:id])
 
@@ -39,7 +45,7 @@ class Api::BookingsController < ApplicationController
 
     private
     def booking_params
-        params.require(:booking).permit(:)
+        params.require(:booking).permit(:car_id, :user_id, :pickup_date, :dropoff_date)
     end
 
 end
