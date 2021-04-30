@@ -31,6 +31,16 @@ class Api::ReviewsController < ApplicationController
         end
     end
 
+    #DELETE /api/carlistings/:carlisting_id/reviews/:id
+    def destroy
+        @review = Review.find(params[:id])
+        if @review.destroy
+            return
+        else 
+            render json: @review.errors.full_messages, status: :unprocessable_entity
+        end
+    end        
+
     private
     def review_params
         params.require(:review).permit(:carlisting_id, :user_id, :body, :rating)
