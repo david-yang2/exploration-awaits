@@ -1,0 +1,1 @@
+json.extract! review, :carlisting_id, :beg_long, :beg_lat, :end_long, :end_lat
