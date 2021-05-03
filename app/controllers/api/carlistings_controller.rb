@@ -45,7 +45,7 @@ class Api::CarlistingsController < ApplicationController
     private
     def carlisting_params
         params.require(:carlisting).permit(:owner_id, :year, :make, :model, :price, :cartype,:drivetrain,
-                                        :transmission, :tripcapacity, :seats, :sleeps, :lockers, :rooftoptent
+                                        :transmission, :tripcapacity, :seats, :sleeps, :lockers, :rooftoptent,
                                         :shower, :kitchenset, :fridge, :longitude, :latitude)
     end
 end

@@ -1,2 +1,2 @@
-module Api::CartlistingsHelper
+module Api::CarlistingsHelper
 end
