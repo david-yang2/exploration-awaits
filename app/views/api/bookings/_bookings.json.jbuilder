@@ -1,0 +1,1 @@
+json.extract! booking, :id, :car_id, :user_id, :pickup_date, :dropoff_date
