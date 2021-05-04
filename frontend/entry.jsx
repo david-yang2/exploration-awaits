@@ -5,16 +5,17 @@ import Root from "./components/root";
 
 document.addEventListener("DOMContentLoaded", () =>{
     const root = document.getElementById("root");
-    let preloadedState = undefined;
+    // let preloadedState = undefined;
 
-    if(window.currentUser) {
-        preloadedState = {
-            session: {
-                currentUser: window.currentUsers
-            }
-        };
-    }
-    const store = configureStore(preloadedState);
+    // if(window.currentUser) {
+    //     preloadedState = {
+    //         session: {
+    //             currentUser: window.currentUsers
+    //         }
+    //     };
+    // }
+    // const store = configureStore(preloadedState);
 
-    ReactDOM.render(<Root store={store} />, root);
+    // ReactDOM.render(<Root store={store} />, root);
+    ReactDOM.render(<Root />, root);
 });
