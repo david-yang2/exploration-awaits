@@ -1,9 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import Home from "./home/home";
 
 const App = () => (
     <div>
-        <h1> hi</h1>
+        <Route path="/" component ={Home} />
+
     </div>
 )
 
