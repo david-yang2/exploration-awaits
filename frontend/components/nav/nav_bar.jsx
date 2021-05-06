@@ -20,27 +20,25 @@ export default ({ currentUser, logout }) => {
   // : is part of the ternary function
   : (
     <div>
-      <Link className="btnl" to="/login">Log In</Link>
-      <Link className="btns" to="/signup">Sign Up</Link>
+      <Link to="/login">Log In</Link>
+      <Link to="/signup">Sign Up</Link>
     </div>
   );
 
-  const cart = currentUser ? (
-    <li><Link className ="cartbtn" to='/cart'>Cart</Link></li>
+  const booking = currentUser ? (
+    <li><Link to='/bookings'>Bookings</Link></li>
   ) : (null)
 
   return (
-    <header className="header">
-      <img className="logo" src="./images/home/logo.png" alt=""/>
-      <nav className="navbar">
-        <ul className ="navlinks">
-          <li><Link className ="homel" to='/'>Home</Link></li>
-          <li><Link className ="chefsl" to='/chefs'>Our Chefs</Link></li>
-          <li><Link className ="iteml" to='/items'>Items</Link></li>
-          {cart}
+    <header >
+      <nav >
+        <ul >
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/rigs'>Overland Rigs</Link></li>
+          {booking}
         </ul>
       </nav>
-      <div className="signup-container">
+      <div >
         {display}
       </div>
     </header>
