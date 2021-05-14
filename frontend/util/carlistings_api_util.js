@@ -31,7 +31,7 @@ export const updateCarlisting = carlistingID => {
 
 // create carlisting
 // POST /api/carlistings
-export const updateCarlisting = () => {
+export const createCarlisting = () => {
     return $.ajax({
         url: `/api/carlistings`,
         method: "POST",
@@ -41,7 +41,7 @@ export const updateCarlisting = () => {
 
 // delete carlisting
 // DELETE /api/carlistings/:id
-export const updateCarlisting = carlistingID => {
+export const deleteCarlisting = carlistingID => {
     return $.ajax({
         url: `/api/carlistings/${carlistingID}`,
         method: "DESTROY"

@@ -74,7 +74,7 @@ export const updateListing = listing => dispatch => {
         .then(updatedCarlisting => dispatch(receiveCarlisting(updatedCarlisting)))
 };
 
-export const updateListing = id => dispatch => {
+export const deleteListing = id => dispatch => {
     return CarlistingApiUtil.deleteCarlisting(id)
         .then(() => dispatch(removeCarlisting(id)))
 };
