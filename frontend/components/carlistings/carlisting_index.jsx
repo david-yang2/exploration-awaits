@@ -5,9 +5,16 @@ class CarlistingsIndex extends React.Component{
         super(props)
     };
 
+    componentDidMount(){
+        this.props.fetchCarlistings()
+    }
+
     render(){
+        debugger
         return(
-            <div>CarlistingIndex</div>
+            <div>
+                <h1>Here's a list of our rigs</h1>
+            </div>
         )
     }
 
