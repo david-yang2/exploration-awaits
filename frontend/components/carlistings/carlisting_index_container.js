@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import CarlistingsIndex from "./carlisting_index";
 
 const MapStateToProps = (state) => ({
-    carlistings = state.carlistings
+    carlistings: state.carlistings
 });
 
 const MapDispatchToProps = dispatch => ({
