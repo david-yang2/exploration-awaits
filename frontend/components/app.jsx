@@ -4,15 +4,17 @@ import Home from "./home/home";
 import NavBarContainer from "./nav/navbar_container";
 import SignupContainer from "./sessions/signup_container";
 import LoginContainer from "./login/login_container";
-import CarlistingIndexContainer from "./carlistings/carlisting_index_container";
+import CarlistingsIndexContainer from "./carlistings/carlistings_index_container";
+import CarlistingShowContainer from "./carlistings/carlisting_show_container"
 
 const App = () => (
     <div>
         <Route path="/" component={NavBarContainer} />
         <Route exact path="/" component ={Home} />
-        <Route path="/rigs" component ={CarlistingIndexContainer} />
+        <Route path="/rigs" component ={CarlistingsIndexContainer} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
+        <Route exact path="/carlistings/:id" component={CarlistingShow} />
     </div>
 )
 
