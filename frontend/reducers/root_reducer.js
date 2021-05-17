@@ -1,10 +1,12 @@
 import {combineReducers} from "redux";
 import SessionReducer from "./session_reducer"
-import CarlistingReducer from "./carlisting_reducer"
+import CarlistingsReducer from "./carlistings_reducer"
+import ReviewsReducer from "./reviews_reducer"
 
 const RootReudcer = combineReducers({
-    carlisting: CarlistingReducer,
-    session: SessionReducer
+    carlistings: CarlistingsReducer,
+    session: SessionReducer,
+    reviews: ReviewsReducer
 
 });
 
