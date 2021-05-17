@@ -12,10 +12,10 @@ export const getCarlistings = () => {
 // show carlisting
 // GET /api/carlistings/:id
 export const showCarlisting = carlistingID => {
+    debugger
     return $.ajax({
         url: `/api/carlistings/${carlistingID}`,
         method: "GET",
-        data: {carlisting}
     })
 }
 
@@ -25,7 +25,7 @@ export const updateCarlisting = carlistingID => {
     return $.ajax({
         url: `/api/carlistings/${carlistingID}`,
         method: "PATCH",
-        data: {carlisting}
+        data: {carlisting: carlisting}
     })
 }
 
@@ -35,7 +35,7 @@ export const createCarlisting = () => {
     return $.ajax({
         url: `/api/carlistings`,
         method: "POST",
-        data: {carlisting}
+        data: {carlisting: carlisting}
     })
 }
 
