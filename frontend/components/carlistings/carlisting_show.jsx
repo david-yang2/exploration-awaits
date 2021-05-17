@@ -5,9 +5,21 @@ class CarlistingShow extends React.Component{
         super(props)
     }
     
+    componentDidMount(){
+        this.props.fetchCarlisting(this.props.match.params.id);
+    }
 
     render(){
-        return null
+        const {carlisting} = this.props;
+        if (!carlisting) return null
+
+        return(
+            <div>
+                <div>
+                    <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
+                </div>
+            </div>
+        )
     }
 }
 

@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
 import CarlistingShow from "./carlisting_show";
-import {fetchCarlisting} from "../../actions/carlisting_actions"
+import {fetchCarlisting} from "../../actions/carlistings_actions"
 
 const mapStateToProps = (state, ownProps) => ({
-    carlistings: state.carlistings[ownProps.match.params.id]
+    carlisting: state.carlistings[ownProps.match.params.id]
 })
 
 const mapDispatchToProps = dispatch => ({
