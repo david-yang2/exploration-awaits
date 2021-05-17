@@ -17,11 +17,12 @@ class User < ApplicationRecord
       foreign_key: :user_id,
       class_name: :Booking
     })
-  
-    # has_many :cartitems,
-    #   through: :carts,
-    #   source: :cartitems
-  
+    
+    has_many(:reviews, {
+      primary_key: :id,
+      foreign_key: :user_id,
+      class_name: :Review
+  })
   
   
     # Class method for finding a user ONLY if we have the correct username and password
