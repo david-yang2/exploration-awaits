@@ -20,7 +20,7 @@ export const showCarlisting = carlistingID => {
 }
 
 // update carlisting
-// GET /api/carlistings/:id
+// PATCH /api/carlistings/:id
 export const updateCarlisting = carlistingID => {
     return $.ajax({
         url: `/api/carlistings/${carlistingID}`,
