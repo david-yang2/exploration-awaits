@@ -14,7 +14,7 @@ const App = () => (
         <Route path="/rigs" component ={CarlistingsIndexContainer} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
-        <Route exact path="/carlistings/:id" component={CarlistingShow} />
+        <Route exact path="/carlistings/:id" component={CarlistingShowContainer} />
     </div>
 )
 
