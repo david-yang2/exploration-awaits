@@ -6,11 +6,10 @@ class Api::ReviewsController < ApplicationController
         render json: @carlisting.reviews
     end
 
-    # #GET    /api/carlistings/:carlisting_id/reviews/:id
-    # def show
-    #     @carlisting = Carlisting.find(params[:carlisting_id])
-    #     render json: @carlisting.reviews
-    # end
+    #GET    /api/reviews/:id
+    def show
+        @review = Review.find(params[:id])
+    end
 
     #POST   /api/carlistings/:carlisting_id/reviews
     def create
