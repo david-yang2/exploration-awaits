@@ -2,14 +2,15 @@ class Api::ReviewsController < ApplicationController
 
     #GET    /api/reviews
     def index
-        @reviews = Review.all
-    end
-
-    #GET    /api/carlistings/:carlisting_id/reviews/:id
-    def show
         @carlisting = Carlisting.find(params[:carlisting_id])
         render json: @carlisting.reviews
     end
+
+    # #GET    /api/carlistings/:carlisting_id/reviews/:id
+    # def show
+    #     @carlisting = Carlisting.find(params[:carlisting_id])
+    #     render json: @carlisting.reviews
+    # end
 
     #POST   /api/carlistings/:carlisting_id/reviews
     def create
