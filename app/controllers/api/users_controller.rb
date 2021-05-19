@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+
+  #POST   /api/users
   def create
     @user = User.new(user_params)
     if @user.save
@@ -9,6 +11,7 @@ class Api::UsersController < ApplicationController
     end
   end
   
+  #PATCH  /api/users/:id
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -18,10 +21,12 @@ class Api::UsersController < ApplicationController
     end
   end
   
+  #GET    /api/users/:id
   def show
     @user = selected_user
   end
   
+  #GET    /api/users
   def index
     @users = User.all
   end
