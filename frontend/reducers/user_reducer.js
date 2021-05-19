@@ -1,4 +1,5 @@
 import {
+    ALL_USERS,
     CURRENT_USER
 } from "../actions/user_actions";
 
@@ -8,8 +9,10 @@ const UsersReducer = (oldState = {}, action) =>{
 
     let nextState = Object.assign({}, oldState);
     switch (action.type) {
+        case ALL_USERS:
+            return action.users;
+
         case CURRENT_USER:
-            // user is the payload for the CURRENT_USER action
             return action.user;
 
         default:
