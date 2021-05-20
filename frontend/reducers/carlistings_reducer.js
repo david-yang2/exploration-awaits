@@ -15,7 +15,6 @@ const CarlistingsReducer = (oldState = {}, action) =>{
         case RECEIVE_ALL_CARLISTINGS:
             
             return action.carlistings;
-
         case RECEIVE_CARLISTING:
             nextState[action.carlisting.id] = action.carlisting;
             return nextState;
