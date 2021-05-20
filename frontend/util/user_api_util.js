@@ -1,3 +1,6 @@
+
+
+
 //Get info about the current user
 
 export const fetchUser = userId => {
@@ -7,8 +10,8 @@ export const fetchUser = userId => {
     })
 };
 
-// Get all users
 
+// Get all users
 export const fetchUsers =()=>{
     return $.ajax({
         url:`api/users`,
