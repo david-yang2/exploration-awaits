@@ -1,4 +1,4 @@
-import * as ReviewApiUtil from "./util/reviews_api_util"
+import * as ReviewApiUtil from "../util/reviews_api_util"
 
 export const RECEIVE_ALL_REVIEWS = "RECEIVE_ALL_REVIEWS";
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
@@ -7,7 +7,7 @@ export const DELLETE_REVIEW = "DELLETE_REVIEW";
 
 // POJOS
 
-const receiveReviewss = reviews => {
+const receiveReviews = reviews => {
     return {
         type: RECEIVE_ALL_REVIEWS,
         reviews
@@ -35,24 +35,25 @@ const removeReview = reviewId => {
 // THUNK Action Creators
 
 
-export const fetchReviews = () => dispatch => {
-    return ReviewApiUtil.getReviewss()
+export const fetchReviews = rigID => dispatch => {
+    
+    return ReviewApiUtil.getRigReviews(rigID)
         .then(reviews => dispatch(receiveReviews(reviews)))
 };
 
-export const fetchReview = id => dispatch => {
-    return ReviewApiUtil.showReview(id)
+export const fetchReview = reviewId => dispatch => {
+    return ReviewApiUtil.showReview(reviewId)
         .then(review => dispatch(receiveReview(review)))
 };
 
 export const createReview = review => dispatch => {
-    return ReviewApiUtil.createCarlisting(review)
-        .then(newReview => dispatch(receiveReview(newReview)))
+    return ReviewApiUtil.createReview(review)
+        //.then(newReview => dispatch(receiveReview(newReview)))
 };
 
-export const updateReview = review => dispatch => {
+export const updateRigReview = review => dispatch => {
     return ReviewApiUtil.updateReview(review)
-        .then(updatedReview => dispatch(receiveReview(updatedReview)))
+        // .then(updatedReview => dispatch(receiveReview(updatedReview)))
 };
 
 export const deleteReview = id => dispatch => {
