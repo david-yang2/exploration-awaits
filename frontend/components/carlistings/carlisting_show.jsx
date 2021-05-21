@@ -15,9 +15,6 @@ class CarlistingShow extends React.Component{
         this.props.fetchCarlisting(this.props.match.params.id)
         this.props.fetchReviews(this.props.match.params.id)
         this.props.fetchAllUsers()
-        // this.props.session.currentUser ? 
-        //     (this.props.fetchCurrentUser(this.props.session.currentUser.id))
-        //     : (null)
 
     }
 
@@ -31,15 +28,18 @@ class CarlistingShow extends React.Component{
     }
 
 
-    
     render(){
         const {carlisting, reviews, user} = this.props;
         if (!carlisting) return null
+        debugger
         return (Object.keys(reviews).length != undefined && Object.keys(user).length >0 ?
             <div>
                 <div>
                     <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
-                    <CreateReview />
+                    {this.props.session.currentUser ?     
+                            <CreateReview createReview={this.createReview}
+                                            currentUserId = {this.props.session.currentUser.id}/>
+                            : <h2>Please Login/SignUp to leave a comment</h2>} 
                 </div>
                 <div>
                     {Object.values(reviews).map(review => 
