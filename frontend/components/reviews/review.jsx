@@ -32,8 +32,11 @@ class Review extends React.Component{
                             <h5>
                                 Name: {user.username}
                             </h5>
-                            <form>
-                                Review: {this.props.review.body}
+                            <form onSubmit={this.handleSubmit}>
+                                <textarea value={this.state.body}
+                                          onChange = {this.update('body')}
+                                />
+                                <input type="submit" value="Update Review" />
                             </form>
                             <br />
                         </div>
