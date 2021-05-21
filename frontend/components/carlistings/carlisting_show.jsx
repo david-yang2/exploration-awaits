@@ -3,7 +3,9 @@ import Review from "../reviews/review"
 
 class CarlistingShow extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+
+        this.updateReview = this.updateReview.bind(this)
     }   
     
     componentDidMount(){
@@ -16,24 +18,31 @@ class CarlistingShow extends React.Component{
         //     : (null)
 
     }
+    
+    updateReview(updatedReview){
+        this.props.updateRigReview(updatedReview)
+    }
 
+    
     render(){
         const {carlisting, reviews, user} = this.props;
-        debugger
         if (!carlisting) return null
-        debugger
         return (reviews.length != undefined && Object.keys(user).length >0 ?
             <div>
                 <div>
                     <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
-                    <Review reviews={reviews}
-                            users={user}/>
+                    {Object.values(reviews).map(review => 
+                                            <Review review={review}
+                                            users={user}
+                                            updateReview = {this.updateReview}/>
+                                            )}
+
                 </div>
             </div>
         :
             null
         )
-        }
+    }
 }
 
 
