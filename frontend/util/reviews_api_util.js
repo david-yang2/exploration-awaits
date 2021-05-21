@@ -1,31 +1,30 @@
 
 
-// Get all reviews
-// GET /api/reviews
-export const getReviews = () => {
+// Get all reviews for specific Rig
+//GET    /api/carlistings/:carlisting_id/reviews
+export const getRigReviews = carlistingID => {
     return $.ajax({
-        url: `/api/reviews`,
+        url: `/api/carlistings/${carlistingID}/reviews`,
         method: "GET"
     })
 }
 
 // show review
-// GET api/carlistings/:carlisting_id/reviews/:id
-export const showReview = (carlistingID, reviewID) => {
-    debugger
+// GET    /api/reviews/:id
+export const showReview = reviewID => {
     return $.ajax({
-        url: `/api/carlistings/${carlistingID}/reviews/${reviewID}`,
+        url: `/api/reviews/${reviewID}`,
         method: "GET",
     })
 }
 
 // update review
-// PATCH /api/carlistings/:carlisting_id/reviews/:id
-export const updateReview = (carlistingID, reviewID) => {
+// PATCH  /api/reviews/:id
+export const updateReview = review => {
     return $.ajax({
-        url: `/api/carlistings/${carlistingID}/reviews/${reviewID}`,
+        url: `/api/reviews/${review.id}`,
         method: "PATCH",
-        data: {review: review}
+        data: {review}
     })
 }
 
