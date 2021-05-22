@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
 
-    #GET    /api/reviews
+    #GET    /api/carlistings/:carlisting_id/reviews
     def index
         @carlisting = Carlisting.find(params[:carlisting_id])
         render json: @carlisting.reviews
@@ -15,17 +15,17 @@ class Api::ReviewsController < ApplicationController
     def create
         @review = Review.new(review_params)
         if @review.save
-            return
+            render :show
         else 
             render json: @review.errors.full_messages, status: :unprocessable_entity
         end
     end
 
-    #PATCH  /api/carlistings/:carlisting_id/reviews/:id
+    #PATCH  /api/reviews/:id
     def update
         @review = Review.find(params[:id])
         if @review.update(review_params)
-            return
+            render :show
         else 
             render json: @review.errors.full_messages, status: :unprocessable_entity
         end
@@ -43,6 +43,6 @@ class Api::ReviewsController < ApplicationController
 
     private
     def review_params
-        params.require(:review).permit(:carlisting_id, :user_id, :body, :rating)
+        params.require(:review).permit(:id, :carlisting_id, :user_id, :body, :rating, :created_at, :updated_at)
     end
 end
