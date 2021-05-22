@@ -30,9 +30,9 @@ export const updateReview = review => {
 
 // create review
 // POST /api/carlistings/:carlisting_id/reviews
-export const createReview = carlistingID => {
+export const createReview = review => {
     return $.ajax({
-        url: `/api/carlistings/${carlistingID}/reviews`,
+        url: `/api/carlistings/${review.carlisting_id}/reviews`,
         method: "POST",
         data: {review: review}
     })
