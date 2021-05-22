@@ -8,34 +8,33 @@ class CreateReview extends React.Component{
             carlisting_id: this.props.carlistingId,
             user_id: this.props.currentUser.id,
             body: "",
-            rating: null
+            rating: 5
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field){
- 
         return e => {
-    
           this.setState({[field]: e.currentTarget.value});
         }
       }
 
     handleSubmit(){
-        return this.props.updateReview(this.state)
+        this.props.createReview(this.state)
+        this.setState({body: ""})
 
     }
     
     render(){
-        debugger
         return(
             <div>
                 <h3>Hi {this.props.currentUser.username}, </h3>
                     <form onSubmit={this.handleSubmit}>
-                    <textarea value={this.state.body}
-                            placeholder="Would you like to create a review?"
-                            onChange = {this.update('body')}
-                    />
-                    <input type="submit" value="Create Review" />
+                        <textarea value={this.state.body}
+                                placeholder="Would you like to create a review?"
+                                onChange = {this.update('body')}
+                        />
+                        <input type="submit" value="Create Review" />
                 </form>
             </div>
         )
@@ -43,3 +42,5 @@ class CreateReview extends React.Component{
 }
 
 export default CreateReview;
+
+
