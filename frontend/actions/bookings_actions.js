@@ -28,3 +28,21 @@ const deleteBooking = bookingId => {
         bookingId
     }
 }
+
+
+// THUNK ACtion Creators
+
+export const fetchBookings = userId =>{
+    return BookingsApiUtil.fetchUserBookings(userId)
+        .then(usersBookings => dispatc(receiveBookings(usersBookings)))
+}
+
+export const createNewBooking = booking =>{
+    return BookingsApiUtil.createBooking(booking)
+        .then(newBooking => dispatc(receiveBooking(newBooking)))
+}
+
+export const deleteBooking = booking => {
+    return BookingsApiUtil.deleteReview(booking)
+        .then(() => dispatchEvent(deleteBooking(booking.id)))
+}
