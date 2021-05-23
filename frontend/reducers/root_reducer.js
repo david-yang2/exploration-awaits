@@ -3,12 +3,14 @@ import SessionReducer from "./session_reducer"
 import CarlistingsReducer from "./carlistings_reducer"
 import ReviewsReducer from "./reviews_reducer"
 import UsersReducer from "./user_reducer"
+import BookingsReducer from "./bookings_reducer"
 
 const RootReudcer = combineReducers({
     carlistings: CarlistingsReducer,
     session: SessionReducer,
     reviews: ReviewsReducer,
-    users: UsersReducer
+    user: UsersReducer,
+    bookings: BookingsReducer
 
 });
 
