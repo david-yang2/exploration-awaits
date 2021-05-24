@@ -31,7 +31,7 @@ class Api::ReviewsController < ApplicationController
         end
     end
 
-    #DELETE /api/carlistings/:carlisting_id/reviews/:id
+    #DELETE /api/bookings/:id
     def destroy
         @review = Review.find(params[:id])
         if @review.destroy
