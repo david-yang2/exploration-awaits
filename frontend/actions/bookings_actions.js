@@ -1,30 +1,29 @@
 import * as BookingsApiUtil from "../util/bookings_api_util";
-import { DELLETE_REVIEW } from "./reviews_actions";
 
-export const RECEIVE_BOOKINGS = "RECEIVE_BOOKINGS"
-export const RECEIVE_BOOKING = "RECEIVE_BOOKING"
-export const DELETE_BOOKING = "DELETE_BOOKING"
+export const RECEIVE_ALL_BOOKINGS = "RECEIVE_ALL_BOOKINGS";
+export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
+export const DELETE_BOOKING = "DELETE_BOOKING";
 
 
 // POJOs
 
 const receiveBookings = bookings => {
     return {
-        type: RECEIVE_BOOKINGS,
+        type: RECEIVE_ALL_BOOKINGS,
         bookings
     }
 }
 
 const receiveBooking = booking => {
     return {
-        type: RECEIVE_BOOKINGS,
+        type: RECEIVE_BOOKING,
         booking
     }
 }
 
 const deleteBooking = bookingId => {
     return{
-        type: DELLETE_REVIEW,
+        type: DELETE_BOOKING,
         bookingId
     }
 }
@@ -32,17 +31,17 @@ const deleteBooking = bookingId => {
 
 // THUNK ACtion Creators
 
-export const fetchBookings = userId =>{
+export const fetchBookings = userId => dispatch =>{
     return BookingsApiUtil.fetchUserBookings(userId)
-        .then(usersBookings => dispatc(receiveBookings(usersBookings)))
+        .then(usersBookings => dispatch(receiveBookings(usersBookings)))
 }
 
-export const createNewBooking = booking =>{
+export const createNewBooking = booking => dispatch => {
     return BookingsApiUtil.createBooking(booking)
-        .then(newBooking => dispatc(receiveBooking(newBooking)))
+        .then(newBooking => dispatch(receiveBooking(newBooking)))
 }
 
-export const deleteBooking = booking => {
-    return BookingsApiUtil.deleteReview(booking)
-        .then(() => dispatchEvent(deleteBooking(booking.id)))
+export const removeBooking = booking => dispatch => {
+    return BookingsApiUtil.destroyBooking(booking)
+        .then(() => dispatch(deleteBooking(booking.id)))
 }
