@@ -4,7 +4,7 @@ export const ALL_USERS = "ALL_USERS";
 export const CURRENT_USER = "CURRENT_USER";
 
 
-const getUsers = () =>{
+const getUsers = users => {
     return{
         type: ALL_USERS,
         users
@@ -13,13 +13,13 @@ const getUsers = () =>{
 
 const getCurrentUser = user => {
     return{
-    type: CURRENT_USER,
-    user
+        type: CURRENT_USER,
+        user
     }
 };
 
-export const fetchUsers = () => dispatch =>{
-    return UserApiUtil.getUsers()
+export const fetchAllUsers = () => dispatch =>{
+    return UserApiUtil.fetchUsers()
     .then(users => dispatch(getUsers(users)))
 }
 
