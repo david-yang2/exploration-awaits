@@ -46,9 +46,9 @@ export const fetchReview = reviewId => dispatch => {
         .then(review => dispatch(receiveReview(review)))
 };
 
-export const createReview = review => dispatch => {
+export const createRigReview = review => dispatch => {
     return ReviewApiUtil.createReview(review)
-        //.then(newReview => dispatch(receiveReview(newReview)))
+        .then(newReview => dispatch(receiveReview(newReview)))
 };
 
 export const updateRigReview = review => dispatch => {
