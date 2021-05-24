@@ -4,8 +4,9 @@ class Booking < ApplicationRecord
         foreign_key: :user_id,
         class_name: :User
     
-    # has_one :carlisting,
-    #     primary_key: :id,
-    #     foreign_key: :user_id,
-    #     class_name: :Carlisting
+    belongs_to( :carlisting,{
+        primary_key: :id,
+        foreign_key: :car_id,
+        class_name: :Carlisting
+    })
 end
