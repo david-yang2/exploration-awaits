@@ -24,6 +24,7 @@ class Calendar extends React.Component{
             pickup_date: pdate,
             dropoff_date: ddate,
         })
+        alert("You're booking is successful!")
     }
 
     render(){
