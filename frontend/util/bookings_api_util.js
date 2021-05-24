@@ -27,7 +27,7 @@ export const createBooking = booking => {
 // Delete Booking
 // DELETE /api/bookings/:id
 
-export const deleteReview = booking => {
+export const destroyBooking = booking => {
     return $.ajax({
         url: `/api/booking/${booking.id}`,
         method: "DESTROY"
