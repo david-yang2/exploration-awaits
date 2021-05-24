@@ -9,6 +9,7 @@ class CarlistingShow extends React.Component{
 
         this.createReview = this.createReview.bind(this)
         this.updateReview = this.updateReview.bind(this)
+        this.createBooking = this.createBooking.bind(this)
     }   
     
     componentDidMount(){
@@ -20,10 +21,12 @@ class CarlistingShow extends React.Component{
     }
 
     createReview(newReview){
-        debugger
         this.props.createRigReview(newReview)
     }
 
+    createBooking(booking){
+        this.props.createNewBooking(booking)
+    }
     
     updateReview(updatedReview){
         this.props.updateRigReview(updatedReview)
@@ -39,7 +42,11 @@ class CarlistingShow extends React.Component{
                     <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
                 </div>
                 <div>
-                    <Calendar />
+                    <Calendar createBooking={this.createBooking}
+                              carlistingId={carlisting.id}
+                              currentUserId={this.props.session.currentUser.id}
+                              />
+                        {/* <Calendar /> */}
                 </div>
                 <div>
                     {this.props.session.currentUser ?     
