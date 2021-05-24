@@ -14,18 +14,19 @@ class Calendar extends React.Component{
             bookEndDate: null,
         }
         this.bookDates = this.bookDates.bind(this)
+        
     }
 
-    bookDates(){
-        this.setState({
-            bookStartDate: this.state.startDate._d,
-            endStartDate: this.state.endDate._d
+    bookDates= (pdate, ddate) => {
+        this.props.createBooking({
+            car_id: this.props.carlistingId,
+            user_id: this.props.currentUserId,
+            pickup_date: pdate,
+            dropoff_date: ddate,
         })
-        console.log(this.state)
     }
 
     render(){
-        debugger
         return (
             <div>
                 <div>
@@ -37,10 +38,15 @@ class Calendar extends React.Component{
                         onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                         focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                         onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                        startDatePlaceholderText="Pick Up"
+                        endDatePlaceholderText="Drop off"
                     />
                     
                 </div>
-                <button onClick={ () => this.bookDates()}> Book now! </button>
+                <button onClick={ () => this.bookDates(
+                                            this.state.startDate._d.toLocaleDateString('zh-Hans-CN'),
+                                            this.state.endDate._d.toLocaleDateString('zh-Hans-CN')
+                                        )}> Book now! </button>
             </div>
 
 
