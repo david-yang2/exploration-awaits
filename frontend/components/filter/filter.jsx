@@ -1,62 +1,96 @@
 import React from "react"
 
-
 class Filter extends React.Component{
     constructor(props){
         super(props)
         this.state={
             listingKeys: Object.keys(this.props.carlistings[0]),
-            id: [],
-            owner_id: [],
-            year: [],
             make: [],
             model: [],
-            price: [],
-            cartype: [],
             drivetrain: [],
-            transmission: [],
-            tripcapacity: [],
-            seats: [],
-            sleeps: [],
-            lockers: [],
-            rooftoptent: [],
-            shower: [],
-            kitchenset: [],
-            fridge: [],
-            longitude: [],
-            latitude: [],
-            location: [],
         }
 
-    this.iterateKey = this.iterateKey.bind(this);
     this.getUniqueValues = this.getUniqueValues.bind(this)
-        
+    this.filterListings = this.filterListings.bind(this)
+    this.handleToggle = this.handleToggle.bind(this)
     }
 
-
-    getUniqueValues(k){
+    handleToggle(){
+        return null
+    }
+    getUniqueValues(key){
         const data = this.props.carlistings
-        const keyNames = this.state.listingKeys
-        const unique = [...new Set(data.map(item => item[k]))]
-        this.state[k].push(unique)
-
+        const unique = [...new Set(data.map(item => item[key]))]
+        return unique
     }
 
-    iterateKey(){
-
-        this.state.listingKeys.map(key => this.getUniqueValues(key))
-        
-        // for (k in this.state.listingKeys){
-        //     console.log(this.props.carlistings[0][this.state.listingKeys[k]])}
-    }   
-
-
-    render(){
+    filterListings(key){
+        const unique = this.getUniqueValues(key)
+        this.setState({[key]: unique})
         debugger
+    }
+    render(){
         return (
             <div>
-                <button onClick={this.iterateKey}>unique</button>
-                <h5>{this.state.drivetrain}</h5>
+                {/* Make button and checkbox */}
+                <div>
+                    <button onClick={() => this.filterListings("make")}>Make</button>
+                    <div>
+                        {Object.values(this.state.make).map(value => (
+                            <div key={value}> 
+                                <input
+                                type="checkbox"
+                                onChange={this.handleToggle}
+                                id={value}
+                                />
+                                <label for={value}>
+                                    {value}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                {/* Model button and checkbox */}
+                <div>
+                    <button onClick={() => this.filterListings("model")}>Model</button>
+                    <div>
+                        {Object.values(this.state.model).map(value => (
+                            <div key={value}> 
+                                <input
+                                type="checkbox"
+                                onChange={this.handleToggle}
+                                id={value}
+                                />
+                                <label for={value}>
+                                    {value}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+                {/* Drivetrain button and checkbox */}
+                <div>
+                    <button onClick={() => this.filterListings("drivetrain")}>Drivetrain</button>
+                    <div>
+                        {Object.values(this.state.drivetrain).map(value => (
+                            <div key={value}> 
+                                <input
+                                type="checkbox"
+                                onChange={this.handleToggle}
+                                id={value}
+                                />
+                                <label for={value}>
+                                    {value}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+
+
+                
             </div>
         )
     }
