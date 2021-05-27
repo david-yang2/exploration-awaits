@@ -6,31 +6,19 @@ class Api::BookingsController < ApplicationController
         render json: @user.bookings
     end
 
-    # #GET    /api/bookings/:id
-    # def show
-    #     @booking = Booking.find(params[:id])
-    # end
 
     #POST   /api/users/:user_id/bookings
     def create
         @booking = Booking.new(booking_params)
+        @user = User.find(params[:user_id])
         if @booking.save
-            render :show
+            # need to render all bookings rather than individual (e.g. :show)
+            # for bookings link and component
+            render json: @user.bookings
         else
             render json: @booking.errors.full_messages, status: 422
         end
     end
-
-    # #PATCH  /api/bookings/:id
-    # def update
-    #     @booking = Booking.find(params[:id])
-
-    #     if @booking.update(booking_params)
-    #         return
-    #     else 
-    #         render json: @booking.errors.full_messages, status: 422
-    #     end
-    # end
 
     #DELETE /api/bookings/:id
     def destroy
@@ -50,3 +38,22 @@ class Api::BookingsController < ApplicationController
     end
 
 end
+
+
+
+    # #GET    /api/bookings/:id
+    # def show
+    #     @booking = Booking.find(params[:id])
+    # end
+
+
+    # #PATCH  /api/bookings/:id
+    # def update
+    #     @booking = Booking.find(params[:id])
+
+    #     if @booking.update(booking_params)
+    #         return
+    #     else 
+    #         render json: @booking.errors.full_messages, status: 422
+    #     end
+    # end
