@@ -5,11 +5,14 @@ class Bookings extends React.Component{
     constructor(props){
         super(props)
         this.deleteBooking = this.deleteBooking.bind(this)
+        this.getCarOwnersName = this.getCarOwnersName.bind(this)
+        this.propsAreEmpty = this.propsAreEmpty.bind(this)
     }
 
     componentDidMount(){
         this.props.fetchBookings(this.props.session.currentUser.id)
         .then(() => this.props.fetchCarlistings())
+        .then(() => this.props.fetchAllUsers())
 
 
     }
@@ -19,10 +22,22 @@ class Bookings extends React.Component{
         
     }
 
+    getCarOwnersName(id){
+        let carBooked = this.props.carlistings[id]
+        let carOwnersId = carBooked.owner_id
+        let owner = this.props.user[carOwnersId]
+        return owner.username
+    }
+
+    propsAreEmpty(){
+        return (Object.keys(this.props.bookings).length ===0 || 
+                Object.keys(this.props.carlistings).length ===0 ||
+                Object.keys(this.props.user).length ===0)
+    }
 
     render(){
-        const {bookings, session} = this.props
-        if (!bookings) return null
+        const {bookings, session, carlistings, user} = this.props
+        if (this.propsAreEmpty()) return null
         return(
             <div>
                 <div>
@@ -42,6 +57,7 @@ class Bookings extends React.Component{
                 <div>
                     {Object.values(bookings).map(booking=>
                         <div key={booking.id}>
+                            <h3>Owner: {this.getCarOwnersName(booking.car_id)}</h3>
                             <h3 key={booking.id}>
                                 Pick Up:{Date(booking.pickup_date)} 
                             </h3>
