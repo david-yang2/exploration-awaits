@@ -20,7 +20,6 @@ class Bookings extends React.Component{
 
     render(){
         const {bookings} = this.props
-        debugger
         if (!bookings) return null
         return(
             <div>
