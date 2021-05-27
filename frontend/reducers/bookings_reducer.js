@@ -1,7 +1,7 @@
 import {
-    RECEIVE_BOOKINGS,
+    RECEIVE_ALL_BOOKINGS,
     RECEIVE_BOOKING,
-    DELLETE_BOOKING
+    DELETE_BOOKING
 } from "../actions/bookings_actions";
 
 
@@ -12,7 +12,7 @@ const BookingsReducer = (oldState = {}, action) =>{
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
-        case RECEIVE_BOOKINGS:
+        case RECEIVE_ALL_BOOKINGS:
             
             return action.bookings;
 
@@ -20,8 +20,14 @@ const BookingsReducer = (oldState = {}, action) =>{
             nextState = action.booking;
             return nextState;
 
-        case DELLETE_BOOKING:
-            delete nextState[action.bookingId];
+        case DELETE_BOOKING:
+            let pos = 0
+            
+            Object.values(nextState).map((booking,idx) => {
+                if (booking.id === action.bookingId)
+                    {pos = idx}})
+
+            delete nextState[pos]
             return nextState;
         default:
             return oldState;
