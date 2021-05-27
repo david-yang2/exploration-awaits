@@ -9,6 +9,7 @@ class Bookings extends React.Component{
 
     componentDidMount(){
         this.props.fetchBookings(this.props.session.currentUser.id)
+        .then(() => this.props.fetchCarlistings())
 
 
     }
@@ -17,16 +18,11 @@ class Bookings extends React.Component{
         this.props.removeBooking(booking)
         
     }
-    // componentDidUpdate(){
-    //     debugger
-    //     this.props.fetchCarlistings();
-    // }
 
 
     render(){
         const {bookings, session} = this.props
         if (!bookings) return null
-        debugger
         return(
             <div>
                 <div>
@@ -39,16 +35,19 @@ class Bookings extends React.Component{
 
                         :   <div>
                                 <h3>Hi {session.currentUser.username}!</h3>
-                                <h4>Here's a list of your current reservations</h4>
+                                <h4>Here's a list of your upcoming reservations!</h4>
                             </div>}
 
                 </div>
                 <div>
                     {Object.values(bookings).map(booking=>
                         <div key={booking.id}>
-                            <h5 key={booking.id}>
-                                {booking.pickup_date} {booking.dropoff_date}
-                            </h5>
+                            <h3 key={booking.id}>
+                                Pick Up:{Date(booking.pickup_date)} 
+                            </h3>
+                            <h3>
+                                Return:{Date(booking.dropoff_date)}
+                            </h3>
                             <button onClick={()=>this.deleteBooking(booking)}>Cancel Booking</button>
                         </div>
                     )}
