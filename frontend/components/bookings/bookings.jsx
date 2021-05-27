@@ -4,6 +4,7 @@ import React from "react"
 class Bookings extends React.Component{
     constructor(props){
         super(props)
+        this.deleteBooking = this.deleteBooking.bind(this)
     }
 
     componentDidMount(){
@@ -11,7 +12,9 @@ class Bookings extends React.Component{
 
     }
 
-
+    deleteBooking(booking){
+        this.props.removeBooking(booking)
+    }
 
 
 
@@ -22,9 +25,12 @@ class Bookings extends React.Component{
         return(
             <div>
                 {Object.values(bookings).map(booking=>
-                                        <h5 key={booking.id}>
-                                            {booking.pickup_date} {booking.dropoff_date}
-                                        </h5>
+                    <div>
+                        <h5 key={booking.id}>
+                            {booking.pickup_date} {booking.dropoff_date}
+                        </h5>
+                        <button onClick={()=>this.deleteBooking(booking)}>Cancel Booking</button>
+                    </div>
                 )}
             </div>
         )
