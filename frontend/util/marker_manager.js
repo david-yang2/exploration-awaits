@@ -2,49 +2,62 @@
 export default class MarkerManager {
     constructor(map){
         this.map = map;
-        this.markers = [];
+        this.markers=[];
     }
 
-    updateMarkers() {
+    addMarker() {
         this.map.addListener("click", (e) =>{
-            this.createNewMarker(e.latLng)
+            this.staticMarker(e.latLng)
         })
-      }
+    }
 
 
-    createNewMarker(location){
-        debugger
+    staticMarker(location){
+        // creates a marker on the map
         const marker = new google.maps.Marker({
+            // position: {lat: latitude, lng: longitude},
             position: location,
             map: this.map
         })
-        this.markers.push({location: {lat: marker.position.lat(), lng: marker.position.lng()}})
-        debugger
+        this.markers.push(marker)
     }
-    setMapOnAll(map){
-        for (let i= 0; i < this.markers.length; i++){
-            this.markers[i].setMap(map)
-        }
+    //<button onClick={()=>this.MarkerManager.undo()}>Delete</button>
+
+    // setMapOnAll(map){
+    //     for (let i= 0; i < this.markers.length; i++){
+
+    //         //setMap is a method of google.maps
+    //         this.markers[i].setMap(map)
+    //     }
+    // }
+    
+    undo(){
+        debugger
+        console.log("asdf")
+        this.markers[this.markers.length - 1].setMap(null)
+        this.markers = this.markers.slice(0,-1)
     }
 
-    calcRoute() {
+
+    displayRoute() {
         var directionsService = new google.maps.DirectionsService();
         var directionsRenderer = new google.maps.DirectionsRenderer();
+        var sanFranCoord ={lat: 37.76638193811843, lng: -122.4011369891004}
+        var zionNtnlPrkCoord = {lat: 37.30890288922195, lng:-113.02951048510528}
         directionsRenderer.setMap(this.map);
         var request = {
-        origin: {lat:37.77230427803655, lng:-122.44334222788287},
-        destination: {lat: 37.76638193811843, lng: -122.4011369891004},
-        travelMode: 'DRIVING'
+            origin: sanFranCoord,
+            destination: zionNtnlPrkCoord,
+            travelMode: 'DRIVING'
         };
+
         directionsService.route(request, function(result, status) {
-        if (status == 'OK') {
-            directionsRenderer.setDirections(result);
-        }
+            if (status == 'OK') {
+                directionsRenderer.setDirections(result);
+            }
         });
     }
-
     
-
 }
 
   
