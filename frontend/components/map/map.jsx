@@ -5,36 +5,46 @@ import MarkerManager from "../../util/marker_manager"
 class Map extends React.Component{
     constructor(props){
         super(props)
+        this.state={
+          mapOptions:{
+            center: { lat: 37.7758, lng: -122.435 }, // this is SF
+            zoom: 12
+          }
+        }
     }
 
     componentDidMount(){
-
-      // set the map to show SF
-      const mapOptions = {
-      center: { lat: 37.7758, lng: -122.435 }, // this is SF
-      zoom: 12
-      };
-
       // wrap this.mapNode in a Google Map
-      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.map = new google.maps.Map(this.mapNode, this.state.mapOptions);
 
       //connect to MarkerManager to interact with it
       // create new MarkerManager
       this.MarkerManager = new MarkerManager(this.map)
-      this.MarkerManager.updateMarkers()
-      this.MarkerManager.calcRoute()
 
+      // show the locations of each carlisting
+      Object.values(this.props.carlistings).map(car => 
+          this.MarkerManager.staticMarker({lat: car.latitude, lng: car.longitude}))
+      
+
+      // this.MarkerManager.displayRoute()
+      
+      this.MarkerManager.addMarker()
 
     }
 
     componentDidUpdate(){
-      this.MarkerManager.updateMarkers()
+      this.MarkerManager.addMarker()
     }
+
 
     render() {
         return (
           // this ref gives us access to the map dom node
-          <div ref={ map => this.mapNode = map } id='map-container' /> 
+          <div>
+            <button onClick={()=>this.MarkerManager.undo()}>Delete Previous Marker</button>
+            <div ref={ map => this.mapNode = map } id='map-container' /> 
+
+          </div>
         )
       }
     
