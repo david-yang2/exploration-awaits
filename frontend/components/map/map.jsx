@@ -33,6 +33,32 @@ class Map extends React.Component{
       // this.MarkerManager.addMarker()
 
     }
+    
+    componentDidUpdate(){
+      // wrap this.mapNode in a Google Map
+      this.map = new google.maps.Map(this.mapNode, this.props.mapOptions);
+
+      //connect to MarkerManager to interact with it
+      // create new MarkerManager
+      this.MarkerManager = new MarkerManager(this.map)
+
+      // show the locations of each carlisting
+      Object.values(this.props.carlistings).map(car =>
+          this.MarkerManager.staticMarker(
+            // location
+            {lat: car.latitude, lng: car.longitude}, 
+            // content
+            `<div>
+              <h3>${car.year} ${car.make} ${car.model}</h3>
+            </div>`)
+        )
+    
+
+      // this.MarkerManager.displayRoute()
+      
+      // this.MarkerManager.addMarker()
+
+    }
 
     // componentDidUpdate(){
     //   this.MarkerManager.addMarker()
@@ -41,9 +67,9 @@ class Map extends React.Component{
 
     render() {
         return (
+          
           // this ref gives us access to the map dom node
           <div>
-            <button onClick={()=>this.MarkerManager.undo()}>Delete Previous Marker</button>
             <div ref={ map => this.mapNode = map } id='map-container' />
             {/* <div id="directions-panel" ></div> */}
 

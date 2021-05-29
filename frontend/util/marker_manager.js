@@ -12,7 +12,6 @@ export default class MarkerManager {
 
 
     staticMarker(location, content){
-        debugger
         // creates a marker on the map
         const marker = new google.maps.Marker({
             // position: {lat: latitude, lng: longitude},
