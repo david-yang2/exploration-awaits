@@ -5,7 +5,8 @@ import NavBarContainer from "./nav/navbar_container";
 import SignupContainer from "./sessions/signup_container";
 import LoginContainer from "./login/login_container";
 import CarlistingsIndexContainer from "./carlistings/carlistings_index_container";
-import CarlistingShowContainer from "./carlistings/carlisting_show_container"
+import CarlistingShowContainer from "./carlistings/carlisting_show_container";
+import BookingsContainer from "./bookings/bookings_container"
 
 const App = () => (
     <div>
@@ -15,6 +16,7 @@ const App = () => (
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
         <Route exact path="/carlistings/:id" component={CarlistingShowContainer} />
+        <Route exact path="/bookings/:id" component={BookingsContainer} />
     </div>
 )
 
