@@ -1,8 +1,11 @@
 import {connect} from "react-redux";
 import CarlistingShow from "./carlisting_show";
 import {fetchCarlisting} from "../../actions/carlistings_actions";
-import {fetchReviews} from "../../actions/reviews_actions"
-import { fetchCurrentUser, fetchAllUsers } from "../../actions/user_actions";
+import {fetchAllUsers} from "../../actions/user_actions";
+import {fetchReviews,
+        createRigReview,
+        updateRigReview} from "../../actions/reviews_actions";
+import {createNewBooking} from "../../actions/bookings_actions"
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -10,16 +13,17 @@ const mapStateToProps = (state, ownProps) => {
     reviews: state.reviews,
     session: state.session,
     user: state.user
-}
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-
     return{
     fetchCarlisting: id => dispatch(fetchCarlisting(id)),
     fetchReviews: id => dispatch(fetchReviews(id)),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
-    //fetchCurrentUser: id => dispatch(fetchCurrentUser(id))
+    createRigReview: newReview => dispatch(createRigReview(newReview)),
+    updateRigReview: review => dispatch(updateRigReview(review)),
+    createNewBooking: booking => dispatch(createNewBooking(booking)),
     }
 }
 
