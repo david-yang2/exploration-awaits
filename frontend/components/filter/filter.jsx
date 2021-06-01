@@ -1,6 +1,7 @@
 import React from "react"
 import OverlandRig from "../carlistings/overlandrig"
 
+
 class Filter extends React.Component{
     constructor(props){
         super(props)
@@ -9,11 +10,11 @@ class Filter extends React.Component{
             model: [],
             drivetrain: [],
             sleeps: [],
-            selected: {
-                make: false,
-                model: false,
-                drivetrain: false
-            },
+            // selected: {
+            //     make: false,
+            //     model: false,
+            //     drivetrain: false
+            // },
             selectedMake: [],
             selectedModel: [],
             selectedDrivetrain: [],
@@ -24,19 +25,39 @@ class Filter extends React.Component{
     this.filterListings = this.filterListings.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
     this.noSelectedFilters = this.noSelectedFilters.bind(this)
-    // this.filterCheckBox = this.filterCheckBox.bind(this)
+    this.clearFilters = this.clearFilters.bind(this)
+    this.removeValue = this.removeValue.bind(this)
+
+    this.areFiltersSelected = this.areFiltersSelected.bind(this)
+
+    }
+
+
+    removeValue(arr, value) {
+        const index = arr.indexOf(value);
+        if (index > -1) {
+          arr.splice(index, 1);
+        }
+        return arr
     }
 
     handleSelect(key,value){
-        return e => {
-            // this.setState({[key]: e.currentTarget.value});
-            this.setState(prevState => ({
-                [key]: [...prevState[key], value]
-              }))
+        return (e) => {
+            if (e.currentTarget.checked) {
+                this.setState(prevState => ({
+                    [key]: [...prevState[key], value]
+            }))}
+            else {
+                this.setState({
+                    // remove value after being unchecked
+                    [key]: this.removeValue(this.state[key], value)
+                })
 
+            }
         }
-        
     }
+
+    // get unique values for each feature
     getUniqueValues(key){
         const data = this.props.carlistings
         const unique = [...new Set(data.map(item => item[key]))]
@@ -44,6 +65,7 @@ class Filter extends React.Component{
         return unique
     }
 
+    
     filterListings(key){
         const unique = this.getUniqueValues(key)
         this.setState({[key]: unique})
@@ -51,33 +73,94 @@ class Filter extends React.Component{
     
 
     noSelectedFilters(){
-        // return True if no filters are selected/ arrays are empty
-        // return (this.selectedMake.length < 1 || this.selectedModel.length < 1 || this.selectedDrivetrain.length < 1)
-        if (!this.state.selectedMake){
+    
+        // return True if no filters are selected/arrays are empty
+        if (!this.state.selectedMake || !this.state.selectedModel || !this.state.selectedDrivetrain){
             return true
-        } else if (this.state.selectedMake.length <1) {
+        } else if (this.state.selectedMake .length <1 && this.state.selectedModel.length < 1 && this.state.selectedDrivetrain.length < 1) {
             return true
         } else return false
-        
-
     }
+
+
+    clearFilters(){
+        this.setState({
+            selectedMake: [],
+            selectedModel: [],
+            selectedDrivetrain: [],
+        })
+    }
+
+    areFiltersSelected(make, model, drivetrain){
+        
+        // var checkedMake = this.state.selectedMake.length > 0 ? this.state.selectedMake : null
+        // var checkedModel = this.state.selectedModel.length > 0 ? this.state.selectedModel : null
+        // var checkedDrivetrain = this.state.selectedDrivetrain.length > 0 ? this.state.selectedDrivetrain : null
+
+        // let checkedFeatures = [checkedMake, checkedModel, checkedDrivetrain]
+
+        // let arr = [this.state.selectedMake, this.state.selectedModel, this.state.selectedDrivetrain]
+        let selection = null
+        if (this.state.selectedMake.length === 1 && this.state.selectedModel.length === 0 && this.state.selectedDrivetrain.length === 0) {selection = 0}
+        if (this.state.selectedMake.length === 0 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 0) {selection = 1}
+        if (this.state.selectedMake.length === 0 && this.state.selectedModel.length === 0 && this.state.selectedDrivetrain.length === 1) {selection = 2}
+        if (this.state.selectedMake.length === 1 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 0) {selection = 3}
+        if (this.state.selectedMake.length === 1 && this.state.selectedModel.length === 0 && this.state.selectedDrivetrain.length === 1) {selection = 4}
+        if (this.state.selectedMake.length === 0 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 1) {selection = 5}
+        if (this.state.selectedMake.length === 1 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 1) {selection = 6}
+
+
+
+
+        switch (selection){
+            case 0:
+                return this.state.selectedMake.includes(make);
+            case 1: 
+                return this.state.selectedModel.includes(model);
+            case 2: 
+                return this.state.selectedDrivetrain.includes(drivetrain);
+            case 3:
+                return this.state.selectedMake.includes(make) && this.state.selectedModel.includes(model);
+            case 4: 
+                return this.state.selectedMake.includes(make) && this.state.selectedDrivetrain.includes(drivetrain);
+            case 5: 
+                return this.state.selectedModel.includes(model) && this.state.selectedDrivetrain.includes(drivetrain);
+            case 6: 
+                return this.state.selectedMake.includes(make) && this.state.selectedModel.includes(model) && this.state.selectedDrivetrain.includes(drivetrain);;
+
+
+        }
+
+
+
+        // // combine all selected features
+        // let combinedFeatures = this.state.selectedMake.concat(this.state.selectedModel).concat(this.state.selectedDrivetrain)
+
+        // // check to see if either make, model, or drivetrain is in the combined features
+        // return ((combinedFeatures.includes(make) || 
+        //     combinedFeatures.includes(model) || 
+        //     combinedFeatures.includes(drivetrain) ? 
+        //  true : false))
+    }
+
+
     render(){
         // const selected = ["make", "model", "drivetrain"]
         const {selectedMake, selectedModel, selectedDrivetrain} = this.state
         const carlistings = this.props.carlistings
         return (
             <div>
-                <div className="show-filters">
+                <form className="show-filters">
 
                     {/* Make button and checkbox */}
                     <div>
                         <button onClick={() => this.filterListings("make")}>Make</button>
                         <div>
-                            {Object.values(this.state.make).map(value => (
-                                <div key={value}> 
+                            {Object.values(this.state.make).map((value,idx) => (
+                                <div key={idx}> 
                                     <input
-                                    type="radio"
-                                    onChange={this.handleSelect("selectedMake",value)}
+                                    type="checkbox"
+                                    onClick={this.handleSelect("selectedMake",value)}
                                     id={value}
                                     />
                                     <label for={value}>
@@ -89,14 +172,14 @@ class Filter extends React.Component{
                     </div>
 
                     {/* Model button and checkbox */}
-                    {/* <div>
+                    <div>
                         <button onClick={() => this.filterListings("model")}>Model</button>
                         <div>
-                            {Object.values(this.state.model).map(value => (
-                                <div key={value}> 
+                            {Object.values(this.state.model).map((value,idx) => (
+                                <div key={idx}> 
                                     <input
                                     type="checkbox"
-                                    onChange={this.handleSelect("slectedModel", value)}
+                                    onClick={this.handleSelect("selectedModel",value)}
                                     id={value}
                                     />
                                     <label for={value}>
@@ -105,17 +188,16 @@ class Filter extends React.Component{
                                 </div>
                             ))}
                         </div>
-                    </div> */}
-
+                    </div>
                     {/* Drivetrain button and checkbox */}
-                    {/* <div>
+                    <div>
                         <button onClick={() => this.filterListings("drivetrain")}>Drivetrain</button>
                         <div>
                             {Object.values(this.state.drivetrain).map(value => (
                                 <div key={value}> 
                                     <input
                                     type="checkbox"
-                                    onChange={this.handleSelect("selectedDrivetrain", value)}
+                                    onClick={this.handleSelect("selectedDrivetrain", value)}
                                     id={value}
                                     />
                                     <label for={value}>
@@ -124,14 +206,15 @@ class Filter extends React.Component{
                                 </div>
                             ))}
                         </div>
-                    </div> */}
-                </div> 
+                    </div>
+                    <button onClick={()=>{this.clearFilters()}}>Clear Filters</button>
+                </form> 
                 <div>       
                     <ul>
                         {
                         Object.values(carlistings).map((car,idx) => {
                             if (this.noSelectedFilters()) {
-                    
+                            
                                 return(
                                     <div key={idx}>
                                         <OverlandRig rig={car} 
@@ -139,16 +222,15 @@ class Filter extends React.Component{
                                         />
                                     </div>
                                 )
-                            } else if (selectedMake.includes(car.make)) {
-                    
-                                return (
-                                    <div key={idx}>
-                                        <OverlandRig rig={car} 
-                                                    key={idx}
-                                        />
-                                    </div>
-                                    )   
-                            }
+                            } else if (this.areFiltersSelected(car.make, car.model, car.drivetrain)) {
+                                            return (
+                                                <div key={idx}>
+                                                    <OverlandRig rig={car} 
+                                                                key={idx}
+                                                    />
+                                                </div>
+                                            )   
+                                        }
                         })}
                     
                     </ul>
