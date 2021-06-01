@@ -58,8 +58,8 @@ class CarlistingsIndex extends React.Component{
                         <option value="MOAB">Moab, UT</option>
                         <option value="Yosemite">Yosemite National Park, CA</option>
                     </select>
-                    <Map carlistings={carlistings}
-                            mapOptions={this.state.mapOptions}/>
+                    {/* <Map carlistings={carlistings}
+                            mapOptions={this.state.mapOptions}/> */}
                 </div>
             </div>
         )
