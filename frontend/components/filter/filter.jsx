@@ -109,9 +109,6 @@ class Filter extends React.Component{
         if (this.state.selectedMake.length === 0 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 1) {selection = 5}
         if (this.state.selectedMake.length === 1 && this.state.selectedModel.length === 1 && this.state.selectedDrivetrain.length === 1) {selection = 6}
 
-
-
-
         switch (selection){
             case 0:
                 return this.state.selectedMake.includes(make);
