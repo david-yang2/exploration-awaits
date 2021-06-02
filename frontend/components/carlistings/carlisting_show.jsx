@@ -15,11 +15,11 @@ class CarlistingShow extends React.Component{
     }   
     
     componentDidMount(){
-
+        this.props.fetchTrips(this.props.match.params.id)
         this.props.fetchCarlisting(this.props.match.params.id)
         this.props.fetchReviews(this.props.match.params.id)
         this.props.fetchAllUsers()
-        this.props.fetchTrips(this.props.match.params.id)
+
 
     }
 
@@ -39,7 +39,7 @@ class CarlistingShow extends React.Component{
     render(){
         const {carlisting, reviews, user, trips} = this.props;
         if (!carlisting) return null
-        var listingId = this.props.location.state.photoidx
+        var listingId = carlisting.imageIdx
         var imageId = "carlisting".concat(listingId.toString())
         return (Object.keys(reviews).length != undefined && Object.keys(user).length >0 ?
             <div>
@@ -52,14 +52,10 @@ class CarlistingShow extends React.Component{
                 <div>
                     <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
                 </div>
-
-                <div>
-                    <h3> Previous Trip:     {trips[0].beg_longitude}</h3>
-                </div>
                 
                 {/* show most recent trip on google maps for this carlisting */}
                 <div>
-                    <Map trips={trips} />
+                    <Map trips={trips[0]} />
                 </div>
                 {/* Display bookings calendar and comment box for users
                 can only edit if they are signed in */}
