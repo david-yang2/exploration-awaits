@@ -1,6 +1,6 @@
 class Api::TripsController < ApplicationController
 
-    #GET    /api/trips
+    #GET    /api/carlistings/:carlisting_id/trips
     def index
         @carlisting = Carlisting.find(params[:carlisting_id])
         render json: @carlisting.trips
@@ -8,7 +8,8 @@ class Api::TripsController < ApplicationController
 
     #GET    /api/carlistings/:carlisting_id/trips/:id
     def show
-        @trip = Trip.find(params[:id])
+        @carlisting = Carlisting.find(params[:carlisting_id])
+        render json: @carlisting.trips
     end
 
     #POST   /api/trips
