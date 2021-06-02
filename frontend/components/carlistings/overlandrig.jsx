@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 
 
 const OverlandRig = (props) => {
-    const id = props.photoidx
+    const id = props.rig.imageIdx
     return (
         <div>
             <img src={`rigs/carlisting${id}/image1.jpeg`} width="250px" height ="200px"alt='' />
             <br/>
             <Link to={{
                 pathname:`/carlistings/${props.rig.id}`,
-                state:  { photoidx: props.photoidx}}
+                state:  { imageIdx: id}}
             } > {props.rig.year} {props.rig.make} {props.rig.model}</Link>
                 
                 
