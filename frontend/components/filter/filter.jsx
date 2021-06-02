@@ -211,11 +211,11 @@ class Filter extends React.Component{
                         {
                         Object.values(carlistings).map((car,idx) => {
                             if (this.noSelectedFilters()) {
-                            
                                 return(
                                     <div key={idx}>
                                         <OverlandRig rig={car} 
                                                     key={idx}
+                                                    photoidx={idx}
                                         />
                                     </div>
                                 )
@@ -224,6 +224,7 @@ class Filter extends React.Component{
                                                 <div key={idx}>
                                                     <OverlandRig rig={car} 
                                                                 key={idx}
+                                                                photoidx={idx}
                                                     />
                                                 </div>
                                             )   
