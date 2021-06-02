@@ -2,6 +2,7 @@ import React from "react";
 import Review from "../reviews/review";
 import CreateReview from "../reviews/create_review";
 import Calendar from '../calendar/calendar';
+import * as Images from "../../../public/images";
 
 class CarlistingShow extends React.Component{
     constructor(props){
@@ -36,8 +37,15 @@ class CarlistingShow extends React.Component{
     render(){
         const {carlisting, reviews, user} = this.props;
         if (!carlisting) return null
+        var listingId = this.props.location.state.photoidx
+        var imageId = "carlisting".concat(listingId.toString())
+
         return (Object.keys(reviews).length != undefined && Object.keys(user).length >0 ?
             <div>
+                
+                
+                {Images[imageId].map(image => 
+                    <img src={image} width="250px" height ="200px"alt='' />)}
                 <div>
                     <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
                 </div>
@@ -61,7 +69,8 @@ class CarlistingShow extends React.Component{
                                                 <Review review={review}
                                                 users={user}
                                                 updateReview = {this.updateReview}
-                                                key={review.id}/>
+                                                key={review.id}
+                                                currentUserId={this.props.session.currentUser.id}/>
                                                 )}
                 </div>
             </div>
