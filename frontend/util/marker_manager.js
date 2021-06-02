@@ -10,7 +10,7 @@ export default class MarkerManager {
        
     }
 
-
+    // show pickup/dropoff location for each car
     staticMarker(location, content){
         // creates a marker on the map
         const marker = new google.maps.Marker({
@@ -30,16 +30,16 @@ export default class MarkerManager {
 
     }
 
-    // sample trip from San Francisco to Zion National Park
-    displayRoute() {
+    // display the most recent trip 
+    displayRoute(trip) {
         var directionsService = new google.maps.DirectionsService();
         var directionsRenderer = new google.maps.DirectionsRenderer();
-        var sanFranCoord ={lat: 37.76638193811843, lng: -122.4011369891004}
-        var zionNtnlPrkCoord = {lat: 37.30890288922195, lng:-113.02951048510528}
+        var tripStart ={lat: trip.beg_latitude, lng: trip.beg_longitude}
+        var tripEnd = {lat: trip.end_latitude, lng: trip.end_longitude}
         directionsRenderer.setMap(this.map);
         var request = {
-            origin: sanFranCoord,
-            destination: zionNtnlPrkCoord,
+            origin: tripStart,
+            destination: tripEnd,
             travelMode: 'DRIVING'
         };
 
