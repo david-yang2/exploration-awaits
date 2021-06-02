@@ -1,8 +1,9 @@
 class Carlisting < ApplicationRecord
-    has_many :trips,
+    has_many( :trips, {
         primary_key: :id,
-        foreign_key: :carlisting_id,
+        foreign_key: :car_id,
         class_name: :Trip
+    })
     
     has_many(:reviews, {
         primary_key: :id,
