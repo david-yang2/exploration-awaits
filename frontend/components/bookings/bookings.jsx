@@ -30,8 +30,8 @@ class Bookings extends React.Component{
     }
 
     propsAreEmpty(){
-        return (Object.keys(this.props.bookings).length ===0 || 
-                Object.keys(this.props.carlistings).length ===0 ||
+        return (Object.keys(this.props.bookings).length ===0 && 
+                Object.keys(this.props.carlistings).length ===0 &&
                 Object.keys(this.props.user).length ===0)
     }
 
@@ -44,8 +44,8 @@ class Bookings extends React.Component{
                     {bookings.length<1 ? 
                             <div>
                                 <h3>Hi {session.currentUser.username}! </h3>
-                                <h4>Would you like to reserve one of our Overland Rigs?</h4>
-                                <Link to="/rigs">Here's our listings</Link>
+                                <h4>Looks like you do not have any upcoming reservations. Would you like to reserve one of our Overland Rigs?</h4>
+                                <Link to="/rigs">Check our our Overland Rigs</Link>
                             </div>
 
                         :   <div>
@@ -59,10 +59,11 @@ class Bookings extends React.Component{
                         <div key={booking.id}>
                             <h3>Owner: {this.getCarOwnersName(booking.car_id)}</h3>
                             <h3 key={booking.id}>
-                                Pick Up:{Date(booking.pickup_date)} 
+                                {/* convert date from "yyyy-mm-dd" to "DOW mon dd yy" */}
+                                Pick Up:    {new Date(booking.pickup_date).toDateString()} 
                             </h3>
                             <h3>
-                                Return:{Date(booking.dropoff_date)}
+                                Return:     {new Date(booking.dropoff_date).toDateString()}
                             </h3>
                             <button onClick={()=>this.deleteBooking(booking)}>Cancel Booking</button>
                         </div>
