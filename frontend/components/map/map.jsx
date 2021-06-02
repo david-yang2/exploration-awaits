@@ -15,7 +15,13 @@ class Map extends React.Component{
       //connect to MarkerManager to interact with it
       // create new MarkerManager
       this.MarkerManager = new MarkerManager(this.map)
+      
 
+      // used to determine which page the Map component is being loaded from
+      // if this.props.trips is undefined, it's being loaded from carlisting_index
+      // if this.props.trips is defined, it's being loaded from carlisting_show
+
+      !this.props.trips ? 
       // show the locations of each carlisting
       Object.values(this.props.carlistings).map(car =>
           this.MarkerManager.staticMarker(
@@ -26,9 +32,12 @@ class Map extends React.Component{
               <h3>${car.year} ${car.make} ${car.model}</h3>
             </div>`)
         )
-    
+      : 
+      //display the previous trip for the carlisting
+      this.MarkerManager.displayRoute(this.props.trips[0])
 
-      // this.MarkerManager.displayRoute()
+
+
       
       // this.MarkerManager.addMarker()
 
@@ -80,6 +89,12 @@ class Map extends React.Component{
 }
 
 export default Map;
+
+
+
+
+
+
 
 
 
