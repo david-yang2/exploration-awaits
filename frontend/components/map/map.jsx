@@ -1,4 +1,5 @@
 import React from "react";
+import UsersReducer from "../../reducers/user_reducer";
 import MarkerManager from "../../util/marker_manager"
 
 
@@ -33,15 +34,14 @@ class Map extends React.Component{
             </div>`)
         )
       : 
-      //display the previous trip for the carlisting
-      this.MarkerManager.displayRoute(this.props.trips[0])
+      // display the previous trip for the carlisting
+      this.MarkerManager.displayRoute(this.props.trips)
 
 
-
-      
       // this.MarkerManager.addMarker()
 
     }
+    
     
     componentDidUpdate(){
       // wrap this.mapNode in a Google Map
@@ -51,6 +51,7 @@ class Map extends React.Component{
       // create new MarkerManager
       this.MarkerManager = new MarkerManager(this.map)
 
+      !this.props.trips ? 
       // show the locations of each carlisting
       Object.values(this.props.carlistings).map(car =>
           this.MarkerManager.staticMarker(
@@ -61,6 +62,9 @@ class Map extends React.Component{
               <h3>${car.year} ${car.make} ${car.model}</h3>
             </div>`)
         )
+      : 
+      // display the previous trip for the carlisting
+      this.MarkerManager.displayRoute(this.props.trips)
     
 
       // this.MarkerManager.displayRoute()
