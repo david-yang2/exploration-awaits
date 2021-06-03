@@ -1,0 +1,19 @@
+$border-color: red;
+$border-style: solid;
+
+.carIndex{
+    border: $border-color;
+    border-style: $border-style;
+    display: flex;
+    justify-content: flex-end;
+    margin:20px;
+
+}
+
+.mapFilter{
+    margin: 10px;
+}
+
+.map{
+    margin: 20px;
+}

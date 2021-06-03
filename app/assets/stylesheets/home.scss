@@ -1,7 +1,22 @@
+$border-color: red;
+$border-style: solid;
 
-.home{
-    background-image: url("homepage.jpeg");
-    height: 80vh;
-    width: 95%;
-    margin: 3%;
+
+.homeDesc{
+    border: $border-color;
+    border-style: $border-style;
+    display: flex;
+    height: 85vh;
+
 }
+.home{
+    border: $border-color;
+    border-style: $border-style;
+    background-image: url("homepage.jpeg");
+    height: 98%;
+    border: transparent;
+    margin: 3%;
+    opacity: 90%;
+    background-repeat: no-repeat;
+}
+
