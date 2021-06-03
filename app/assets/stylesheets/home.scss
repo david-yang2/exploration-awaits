@@ -1,22 +1,48 @@
-$border-color: red;
+$border-color: transparent;
 $border-style: solid;
+
+
+.home{
+    display:flex;
+    flex-direction: column;
+    border: $border-color;
+    border-style: $border-style;
+    background-image: url("homepage.jpeg");
+    background-size: 100% 100%;
+    height: 85vh;
+
+    background-repeat: no-repeat;
+    // display:flex;
+    // justify-content: center;
+    // flex-direction: row;
+    margin: 10px 15px 0 15px;
+}
+
 
 
 .homeDesc{
     border: $border-color;
     border-style: $border-style;
     display: flex;
-    height: 85vh;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    // padding: 100px, 10px, 10px, 10px;
+    color: black;
+    text-align: center;
 
 }
-.home{
+
+.homeInfo{
     border: $border-color;
     border-style: $border-style;
-    background-image: url("homepage.jpeg");
-    height: 98%;
-    border: transparent;
-    margin: 3%;
-    opacity: 90%;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    padding: 10px;
+    color: black;
+    text-align: center;
+
+
 }
 
