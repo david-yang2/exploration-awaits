@@ -6,16 +6,17 @@ $border-style: solid;
     display:flex;
     flex-direction: column;
     border: $border-color;
-    border-style: $border-style;
+    // border-style: $border-style;
     background-image: url("homepage.jpeg");
     background-size: 100% 100%;
     height: 85vh;
-
+    width: 100%;
+    margin-top: 10px;
     background-repeat: no-repeat;
     // display:flex;
     // justify-content: center;
     // flex-direction: row;
-    margin: 10px 15px 0 15px;
+    
 }
 
 
