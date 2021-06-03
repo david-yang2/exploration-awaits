@@ -1,15 +1,26 @@
 import React from "react";
-import UsersReducer from "../../reducers/user_reducer";
 import MarkerManager from "../../util/marker_manager"
 
 
 class Map extends React.Component{
     constructor(props){
         super(props)
+    
+        this.loadMap = this.loadMap.bind(this)
 
     }
 
     componentDidMount(){
+      this.loadMap()
+
+    }
+    
+    componentDidUpdate(){
+      this.loadMap()
+
+    }
+    loadMap(){
+
       // wrap this.mapNode in a Google Map
       this.map = new google.maps.Map(this.mapNode, this.props.mapOptions);
 
@@ -41,41 +52,6 @@ class Map extends React.Component{
       // this.MarkerManager.addMarker()
 
     }
-    
-    
-    componentDidUpdate(){
-      // wrap this.mapNode in a Google Map
-      this.map = new google.maps.Map(this.mapNode, this.props.mapOptions);
-
-      //connect to MarkerManager to interact with it
-      // create new MarkerManager
-      this.MarkerManager = new MarkerManager(this.map)
-
-      !this.props.trips ? 
-      // show the locations of each carlisting
-      Object.values(this.props.carlistings).map(car =>
-          this.MarkerManager.staticMarker(
-            // location
-            {lat: car.latitude, lng: car.longitude}, 
-            // content
-            `<div>
-              <h3>${car.year} ${car.make} ${car.model}</h3>
-            </div>`)
-        )
-      : 
-      // display the previous trip for the carlisting
-      this.MarkerManager.displayRoute(this.props.trips)
-    
-
-      // this.MarkerManager.displayRoute()
-      
-      // this.MarkerManager.addMarker()
-
-    }
-
-    // componentDidUpdate(){
-    //   this.MarkerManager.addMarker()
-    // }
 
 
     render() {
