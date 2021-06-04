@@ -8,6 +8,12 @@ import Map from "../map/map"
 class CarlistingShow extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            //set the default map style of google maps to terrain style
+            mapOptions:{
+                mapTypeId: 'terrain'
+            }
+        }
 
         this.createReview = this.createReview.bind(this)
         this.updateReview = this.updateReview.bind(this)
@@ -41,6 +47,9 @@ class CarlistingShow extends React.Component{
         if (!carlisting) return null
         var listingId = carlisting.imageIdx
         var imageId = "carlisting".concat(listingId.toString())
+        var currentUserId = 0
+
+        this.props.session.currentUserId ? currentUserId = this.props.session.currentUserId : currentUserId =0
         return (Object.keys(reviews).length != undefined && Object.keys(user).length >0 ?
             <div>
 
@@ -55,7 +64,9 @@ class CarlistingShow extends React.Component{
                 
                 {/* show most recent trip on google maps for this carlisting */}
                 <div>
-                    <Map trips={trips[0]} />
+                    <h3> Previous Trip </h3>
+                    <Map trips={trips[0]}
+                            mapOptions={this.state.mapOptions}/>
                 </div>
                 {/* Display bookings calendar and comment box for users
                 can only edit if they are signed in */}
@@ -88,7 +99,7 @@ class CarlistingShow extends React.Component{
                                                 users={user}
                                                 updateReview = {this.updateReview}
                                                 key={review.id}
-                                                currentUserId={this.props.session.currentUser.id}
+                                                currentUserId={currentUserId}
                                                 />
                                                 )}
                 </div>
