@@ -9,6 +9,7 @@ class Login extends React.Component{
             password:"",
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.useDemoLogin = this.useDemoLogin.bind(this)
     }
     
     handleInput(type){
@@ -18,11 +19,18 @@ class Login extends React.Component{
         }
     }
 
+    
+
     handleSubmit(e) {
 
         e.preventDefault();
         // const {history} = this.props;
         this.props.login(this.state)
+        .then(()=> this.props.history.push(`/`));
+    }
+
+    useDemoLogin(){
+        this.props.login({username:"Emma", password:"EmmaDemo"})
         .then(()=> this.props.history.push(`/`));
     }
 
@@ -32,25 +40,28 @@ class Login extends React.Component{
         return(
             <div className="session">
                 <div className="session-container">
-                <h2 className="session-header"> Please Login!</h2>
-                <form className="session-form">
-                        <input 
-                            placeholder="Username:"
-                            type="text"
-                            value={this.state.username}
-                            onChange={this.handleInput('username')}
-                        />
+                    <h2 className="session-header"> Please Login!</h2>
+                    <form className="session-form">
+                            <input 
+                                placeholder="Username:"
+                                type="text"
+                                value={this.state.username}
+                                onChange={this.handleInput('username')}
+                            />
 
-                        <input 
-                            placeholder="Password:"
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.handleInput('password')}
-                        />
-                    <button onClick={this.handleSubmit}>Login</button>
-                </form>
+                            <input 
+                                placeholder="Password:"
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handleInput('password')}
+                            />
+                        <div className="loginbtn">
+                            <button onClick={this.handleSubmit}>Login</button>
+                            <button onClick={this.useDemoLogin}>Demo User</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         )
     }
 }
