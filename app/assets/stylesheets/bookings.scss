@@ -1,0 +1,45 @@
+
+.bkgsContner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bkgsHeader{
+    width:100%;
+}
+.bkgsTitle{
+    width: 80%;
+    margin: 2% 10% 2% 10%;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items:center
+
+}
+
+.bkgsItemContner{
+    width:100%
+}
+
+.bkgsItem{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 2% 10% 2% 10%;
+    padding: 10px;
+    background-color: lightgrey;
+    border-radius: 20px;
+}
+span{
+    font-weight:bold;
+}
+
+.resBtn{
+    background-color: rgb(249, 138, 138);
+    font-size: 10px;
+}
