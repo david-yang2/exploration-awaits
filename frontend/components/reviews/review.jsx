@@ -11,7 +11,6 @@ class Review extends React.Component{
     }
 
     update(field){
- 
         return e => {
     
           this.setState({[field]: e.currentTarget.value});
@@ -24,21 +23,43 @@ class Review extends React.Component{
     }
 
     render(){
+        const form =   this.props.currentUserId === this.props.review.user_id ? 
+            (<div><form onSubmit={this.handleSubmit}>
+                <textarea value={this.state.body}
+                        onChange = {this.update('body')}
+                />
+                <input type="submit" value="Update Review" />
+            </form>
+            <br />
+            </div>) 
+            :
+            (<textarea value={this.state.body} />)
         return (
+            // list all reviews associated with carlisting and name of users who created the review
             <div>
                 {Object.values(this.props.users).map(user =>
                     {if (user["id"] == this.props.review.user_id){ return(
                         <div key={user.id}>
                             <h5>
-                                Name: {user.username}
+                                Review by: {user.username}
                             </h5>
-                            <form onSubmit={this.handleSubmit}>
-                                <textarea value={this.state.body}
-                                          onChange = {this.update('body')}
-                                />
-                                <input type="submit" value="Update Review" />
-                            </form>
-                            <br />
+
+                            {/* can only update review belonging to current user */}
+                            <div> 
+                                {this.props.currentUserId === this.props.review.user_id ? 
+                                (<div>
+                                    <form className="updateForm" onSubmit={this.handleSubmit}>
+                                        <textarea className="updateReviewArea" value={this.state.body}
+                                                onChange = {this.update('body')}
+                                        />r
+                                        <input className="updateReviewBtn" type="submit" value="Update Review" />
+                                    </form>
+                                </div>) 
+                                :
+                                (<div>
+                                    <textarea className="updateReviewArea" value={this.state.body} />
+                                </div>)}
+                            </div>
                         </div>
                                             )}
                     }
@@ -49,49 +70,3 @@ class Review extends React.Component{
 }
 
 export default Review;        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// debugger
-// return(
-//     <div>
-//         <ul>
-//         {Object.values(this.props.reviews).map(r => {   
-//             Object.values(this.props.users).map(u => { 
-//                 if(u["id"] == r.user_id) {
-//                     debugger
-//                     return (
-//                         <div>
-//                             <h2> 
-//                                 Name: {u.username} Review: {r.body}
-//                             </h2>
-//                         </div>
-//                     )
-//         }})})}
-//         </ul>
-//     </div>
-//     )
-
-
-
-
-
-
-
-{/* <div>
-
-<div>
-    {Object.values(props.users).map(u => <h1 key={u.id}>{u.username}</h1>)}
-</div>
-</div>  */}

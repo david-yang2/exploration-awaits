@@ -27,14 +27,14 @@ class CreateReview extends React.Component{
     
     render(){
         return(
-            <div>
+            <div className="createReview">
                 <h3>Hi {this.props.currentUser.username}, </h3>
-                    <form onSubmit={this.handleSubmit}>
-                        <textarea value={this.state.body}
-                                placeholder="Would you like to create a review?"
-                                onChange = {this.update('body')}
-                        />
-                        <input type="submit" value="Create Review" />
+                <form className="createForm" onSubmit={this.handleSubmit}>
+                    <textarea className="createReviewArea" value={this.state.body}
+                            placeholder="Would you like to review this rig?"
+                            onChange = {this.update('body')}
+                    />
+                    <input className="createReviewBtn" type="submit" value="Create Review" />
                 </form>
             </div>
         )
