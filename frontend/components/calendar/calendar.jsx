@@ -29,25 +29,24 @@ class Calendar extends React.Component{
 
     render(){
         return (
-            <div>
-                <div>
-                    <DateRangePicker
-                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                        startDatePlaceholderText="Pick Up"
-                        endDatePlaceholderText="Drop off"
-                    />
-                    
-                </div>
-                <button onClick={ () => this.bookDates(
+            <div className="calendar">
+                <DateRangePicker
+                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                    startDatePlaceholderText="Pick Up"
+                    endDatePlaceholderText="Drop off"
+                />
+
+                {/* onClick will push the dates to bookings model */}
+                <button className="reserveBtn" onClick={ () => this.bookDates(
                                             this.state.startDate._d.toLocaleDateString('zh-Hans-CN'),
                                             this.state.endDate._d.toLocaleDateString('zh-Hans-CN')
-                                        )}> Book now! </button>
+                                        )}> Reserve </button>
             </div>
 
 
