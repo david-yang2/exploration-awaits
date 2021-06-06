@@ -20,9 +20,20 @@ $nav-fontsize: 12px;
     width:100%;
 }
 .headerText{
-    color: white
+    color: white;
+    font-size: 16px;
 }
 
+.navCtrls{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    border: $border-color;
+    border-style: $border-style;
+    width: 50%;
+}
 
 .navbar{
     width: 50%;
@@ -41,22 +52,28 @@ $nav-fontsize: 12px;
     text-decoration: none;
     border: $border-color;
     border-style: $border-style;
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: row;
 
 }
 
 .homeLink{
     color:white;
     font-size: $nav-fontsize;
+    font: bold $nav-fontsize Arial;
 }
 
 .rigsLink{
     color:white;
     font-size: $nav-fontsize;
+    font: bold $nav-fontsize Arial;
 }
 
 .bookingsLink{
     color:white;
     font-size: $nav-fontsize;
+    font: bold $nav-fontsize Arial;
 }
 
 li, a {
@@ -70,7 +87,7 @@ li, a {
 }
 
 .signup-container{
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -86,21 +103,6 @@ li, a {
     border-style: $border-style;
 }
 
-button{
-    padding: 9px 25px;
-    background-color: rgba(0,136,169,1);
-    border:none;
-    border-radius: 50px;
-    cursor: pointer;
-    border: $border-color;
-    border-style: $border-style;
-}
-
-.navCreds{
-    display:flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-}
 
 .btns{
     font: bold $nav-fontsize Arial;
@@ -108,7 +110,7 @@ button{
     background-color: red;
     color: white;
     padding: 2px 6px 2px 6px;
-    border-radius: 50px;
+    // border-radius: 50px;
     margin: 5px;
     border: $border-color;
     border-style: $border-style;
@@ -119,7 +121,7 @@ button{
     background-color: black;
     color: white;
     padding: 2px 6px 2px 6px;
-    border-radius: 50px;
+    // border-radius: 50px;
     margin: 5px;
     border: $border-color;
     border-style: $border-style;
@@ -131,7 +133,7 @@ button{
     background-color: black;
     color: white;
     padding: 2px 6px 2px 6px;
-    border-radius: 50px;
+    // border-radius: 50px;
     margin: 5px;
     border: $border-color;
     border-style: $border-style;

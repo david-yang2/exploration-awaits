@@ -2,8 +2,8 @@
 
 
 $border-color: red;
-$border-style: solid;
-$background-color: rgb(207, 242, 249);
+$border-style: none;
+$background-color: white;
 
 .rigContainer{
     border: $border-color;
@@ -30,7 +30,6 @@ $background-color: rgb(207, 242, 249);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $background-color;
     margin: 10px 0px 10px 0px;
     flex-direction: row;
     width: 100%;

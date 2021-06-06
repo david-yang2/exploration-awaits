@@ -1,0 +1,58 @@
+$border-color: red;
+$border-style: none;
+
+.showContner{
+    border: $border-color;
+    border-style: $border-style;
+    background-color: #edfee6;
+    height: 85vh;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.carInfo{
+    display:flex;
+    flex-direction: column;
+}
+
+.carImgs{
+    // transform: scale(1.1);
+    display:flex;
+    flex-direction:row;
+    overflow: scroll;
+    margin:2px;
+}
+
+.indvImg{
+    margin:2px;
+}
+
+.carFields{
+    border: $border-color;
+    border-style: $border-style;
+    width: 58%;
+    margin-top: 10px;
+    margin-right:2%;
+    padding-left:3%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.carInteractive{
+    display:flex;
+    flex-direction: column;
+    width:38%;
+    margin-left:2%;
+    margin-top:10px;
+}
+
+.reviewContnr{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+}

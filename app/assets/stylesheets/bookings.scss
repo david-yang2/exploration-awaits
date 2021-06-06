@@ -1,12 +1,18 @@
 
+$background-color:#edfee6;
+$container-color: white;
+
 .bkgsContner{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: $background-color;
+    height:90vh
 }
 
 .bkgsHeader{
     width:100%;
+
 }
 .bkgsTitle{
     width: 80%;
@@ -17,6 +23,17 @@
     flex-direction: column;
     align-items:center
 
+}
+
+.noBkngs{
+    align-content: center;
+}
+
+.linkToRigs{
+    padding:20px;
+    background-color: $container-color;
+    border-radius: 20px;
+    font-size: 15px;
 }
 
 .bkgsItemContner{
@@ -32,14 +49,14 @@
     align-content: center;
     margin: 2% 10% 2% 10%;
     padding: 10px;
-    background-color: lightgrey;
+    background-color:#b9a28f;
     border-radius: 20px;
 }
 span{
     font-weight:bold;
 }
 
-.resBtn{
+.bkgsBtn{
     background-color: rgb(249, 138, 138);
     font-size: 10px;
 }
