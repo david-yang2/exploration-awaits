@@ -59,7 +59,7 @@ class CarlistingShow extends React.Component{
         var imageId = "carlisting".concat(listingId.toString())
         var currentUserId = 0
 
-        this.props.session.currentUser.id ? currentUserId = this.props.session.currentUser.id : currentUserId =0
+        this.props.session.currentUser ? currentUserId = this.props.session.currentUser.id : currentUserId =0
         return ( this.propsAreValid() ?
             <div className="showContner">
 
