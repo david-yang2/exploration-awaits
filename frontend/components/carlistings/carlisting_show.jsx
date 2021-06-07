@@ -11,13 +11,19 @@ class CarlistingShow extends React.Component{
         this.state={
             //set the default map style of google maps to terrain style
             mapOptions:{
-                mapTypeId: 'terrain'
+                mapTypeId: 'terrain',
+                zoom: 30
             }
+            // mapTypeControlOptions: {
+            //     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            // }
+
         }
 
         this.createReview = this.createReview.bind(this)
         this.updateReview = this.updateReview.bind(this)
         this.createBooking = this.createBooking.bind(this)
+        this.propsAreValid = this.propsAreValid.bind(this)
     }   
     
     componentDidMount(){
@@ -25,8 +31,6 @@ class CarlistingShow extends React.Component{
         this.props.fetchCarlisting(this.props.match.params.id)
         this.props.fetchReviews(this.props.match.params.id)
         this.props.fetchAllUsers()
-
-
     }
 
     createReview(newReview){
@@ -41,6 +45,12 @@ class CarlistingShow extends React.Component{
         this.props.updateRigReview(updatedReview)
     }
 
+    propsAreValid(){
+        //returns true if all props are fetched
+        return Object.keys(this.props.reviews).length != undefined && 
+               Object.keys(this.props.user).length >0  && 
+               Object.keys(this.props.trips).length>0
+    }
 
     render(){
         const {carlisting, reviews, user, trips} = this.props;
@@ -49,59 +59,81 @@ class CarlistingShow extends React.Component{
         var imageId = "carlisting".concat(listingId.toString())
         var currentUserId = 0
 
-        this.props.session.currentUserId ? currentUserId = this.props.session.currentUserId : currentUserId =0
-        return (Object.keys(reviews).length != undefined && Object.keys(user).length >0 ?
-            <div>
+        this.props.session.currentUser.id ? currentUserId = this.props.session.currentUser.id : currentUserId =0
+        return ( this.propsAreValid() ?
+            <div className="showContner">
 
-                {/* images for carlisting */}
-                {Images[imageId].map((image,idx) => 
-                    <img src={image} width="250px" height ="200px"alt='' key={idx}/>)}
-
-                {/* information for carlisting */}
-                <div>
-                    <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
-                </div>
                 
-                {/* show most recent trip on google maps for this carlisting */}
-                <div>
-                    <h3> Previous Trip </h3>
-                    <Map trips={trips[0]}
-                            mapOptions={this.state.mapOptions}/>
-                </div>
-                {/* Display bookings calendar and comment box for users
-                can only edit if they are signed in */}
-                <div>
-                    {this.props.session.currentUser ?     
+                <div className="carInteractive">
+
+                    <div className="bkgsCal">
+                        {this.props.session.currentUser ?
                             <div>
-                                <div>
-                                    <Calendar createBooking={this.createBooking}
-                                            carlistingId={carlisting.id}
-                                            currentUserId={this.props.session.currentUser.id}
-                                            />
-                                </div>
-                                <div>
-                                    <CreateReview   createReview={this.createReview}
-                                                    carlistingId={carlisting.id}
-                                                    currentUser = {this.props.session.currentUser}
-                                                    />
-                                </div>
+                                <Calendar createBooking={this.createBooking}
+                                        carlistingId={carlisting.id}
+                                        currentUserId={this.props.session.currentUser.id}
+                                        />
                             </div>
-                            : 
-                            <div>
+                            :
+                            <div> 
                                 <Calendar />
-                                <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
                             </div>
-                            }
-                </div>
-                <div>
-                    {Object.values(reviews).map(review => 
-                                                <Review review={review}
-                                                users={user}
-                                                updateReview = {this.updateReview}
-                                                key={review.id}
-                                                currentUserId={currentUserId}
+                        }
+                    </div>
+                    {/* show most recent trip on google maps for this carlisting */}
+                    <div className="idvMap">
+                        <h3> Previous Trip </h3>
+                        <Map trips={trips[0]}
+                                mapOptions={this.state.mapOptions}/>
+                    </div>
+
+    
+                    </div>
+                
+                <div className="carFields">
+
+                    <div className ="carInfo">
+                        {/* information for carlisting */}
+                        <div className="carTitle">
+                            <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
+                        </div>
+
+                        {/* images for carlisting */}
+                        <div className="carImgs">
+                            {Images[imageId].map((image,idx) => 
+                                <img className="indvImg" src={image} width="250px" height ="200px"alt='' key={idx}/>)}
+                        </div>
+
+
+                    </div>
+
+                    <div className="reviewContnr">
+
+                        <div className="createReview">
+                            {this.props.session.currentUser ?     
+                                <CreateReview   createReview={this.createReview}
+                                                carlistingId={carlisting.id}
+                                                currentUser = {this.props.session.currentUser}
                                                 />
-                                                )}
+                                : 
+                                <div>
+                                    <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
+                                </div>
+                            }
+                                
+                        </div>
+                        <div className="updateReview">
+                            <h3>Reviews:</h3>
+                            {Object.values(reviews).map(review => 
+                                                        <Review review={review}
+                                                        users={user}
+                                                        updateReview = {this.updateReview}
+                                                        key={review.id}
+                                                        currentUserId={currentUserId}
+                                                        />
+                                                        )}
+                        </div>
+                    </div>
                 </div>
             </div>
         :
