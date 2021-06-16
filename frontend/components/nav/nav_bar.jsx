@@ -12,33 +12,34 @@ export default ({ currentUser, logout }) => {
   // use ternary to accomplish that
     // currentUser ? () : ()
   const display = currentUser ? (
-    <div>
-      <p> Hello, {currentUser.username}</p>
-      <button onClick={logout}>Log out</button>
+    <div className="welcome-container">
+      <text className="loggedUser"> Hello, {currentUser.username}</text>
+      <button className="logoutbtn" onClick={logout}>Log out</button>
     </div>
   )
   // : is part of the ternary function
   : (
-    <div>
-      <Link to="/login">Log In</Link>
-      <Link to="/signup">Sign Up</Link>
+    <div className="signup-container">
+      <Link className="btnl" to="/login">Log In</Link>
+      <Link className="btns" to="/signup">Sign Up</Link>
     </div>
   );
 
   const booking = currentUser ? (
-    <li><Link to='/bookings'>Bookings</Link></li>
+    <li><Link className="bookingsLink"to={`/bookings/${currentUser.id}`}>Bookings</Link></li>
   ) : (null)
 
   return (
-    <header >
-      <nav >
-        <ul >
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/rigs'>Overland Rigs</Link></li>
-          {booking}
-        </ul>
-      </nav>
-      <div >
+    <header className="header" >
+      <h3 className="headerText">Exploration awaits</h3>
+      <div className="navCtrls">
+        <nav className="navbar">
+          <ul className ="navlinks">
+            <li><Link className ="homeLink"to='/'>Home</Link></li>
+            <li><Link className ="rigsLink"to='/rigs'>Overland Rigs</Link></li>
+            {booking}
+          </ul>
+        </nav>
         {display}
       </div>
     </header>

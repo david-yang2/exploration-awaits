@@ -1,6 +1,7 @@
 $border-color: transparent;
 $border-style: solid;
-
+$font: 'Montserrat', sans-serif;
+$font-style: italic;
 
 .home{
     display:flex;
@@ -9,14 +10,13 @@ $border-style: solid;
     // border-style: $border-style;
     background-image: url("homepage.jpeg");
     background-size: 100% 100%;
-    height: 85vh;
+    height: 83vh;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
     background-repeat: no-repeat;
     // display:flex;
     // justify-content: center;
     // flex-direction: row;
-    
 }
 
 
@@ -32,7 +32,7 @@ $border-style: solid;
     // padding: 100px, 10px, 10px, 10px;
     color: black;
     text-align: center;
-
+    font-family: $font;
 }
 
 .homesubheader{
@@ -45,7 +45,8 @@ $border-style: solid;
     padding: 10px;
     color: black;
     text-align: center;
-
-
+    font-family: $font;
+    font-style: $font-style;
+    font-weight: 1000;
 }
 
