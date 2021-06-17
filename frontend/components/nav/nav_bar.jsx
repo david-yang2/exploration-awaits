@@ -31,16 +31,26 @@ export default ({ currentUser, logout }) => {
 
   return (
     <header className="header" >
-      <h3 className="headerText">Exploration awaits</h3>
-      <div className="navCtrls">
-        <nav className="navbar">
-          <ul className ="navlinks">
-            <li><Link className ="homeLink"to='/'>Home</Link></li>
-            <li><Link className ="rigsLink"to='/rigs'>Overland Rigs</Link></li>
-            {booking}
-          </ul>
-        </nav>
-        {display}
+      <h3 className="header-text">Exploration awaits</h3>
+      <div className="header-content">
+        <div className="portfolio">
+          <a className="github" href='https://github.com/david-yang2'>
+            <div/>
+          </a>
+          <a className="linkedin" href='https://www.linkedin.com/in/david-yang2/'>
+            <div/>
+          </a>
+        </div>
+        <div className="nav-controls">
+          <nav className="navbar">
+            <ul className ="navlinks">
+              <li><Link className ="homeLink"to='/'>Home</Link></li>
+              <li><Link className ="rigsLink"to='/rigs'>Overland Rigs</Link></li>
+              {booking}
+            </ul>
+          </nav>
+          {display}
+        </div>
       </div>
     </header>
   );
