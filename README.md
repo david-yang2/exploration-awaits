@@ -25,6 +25,8 @@ Technologies used in this project include:
 
 ## Goolge maps - pop up markers for each car listing
 
+<p>Within the car listings index page is a map component containing information about each overland car. This component is generated using the Google Maps Javascript api. Once the component is mounted, it will key into each car listing object to obtain its coordinates render a marker on the map. The interactive map also allows users to click on each marker to open an info window with the overland car's Year, Make, Model as well as an image. Overland cars are offered across the nation, so users can use the drop down menu to recenter the map with coordinates of either San Francisco CA, Moab UT, or Yosemite CA.</p>
+
 <img src="app/assets/images/readme/map.gif" alt="">
 <p>&nbsp;</p>
 <p>&nbsp;</p>
