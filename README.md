@@ -9,7 +9,7 @@ Technologies used in this project include:
 - Ruby on Rails - backend API
 - PostgreSQL - database
 - Google Maps Javascript - Directions Service
-- React Dates - bookings calendar
+- React Dates - DatePickerRangee
 
 # Top Application Features
 
@@ -33,6 +33,8 @@ Technologies used in this project include:
 <p>&nbsp;</p>
 
 ## React Dates - make a reservation
+<p>Users can make reservations via the DatePickerRange component from React Dates. Once the pick-up date and drop-off date has been selected, the state will be stored but will not create a new reservation until users click the "Reserve" button. Reserve button is an event handler which passes the state, this.state.startDate._d and this.state.endDate._d, to the createBooking prop. This action will be dispatched and a new bookings entry will be posted to the logged in user.</p>
+</p>
 
 <img src="app/assets/images/readme/calendar.gif" alt="">
 <p>&nbsp;</p>
