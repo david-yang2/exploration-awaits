@@ -1,6 +1,6 @@
 
 $background-color:#edfee6;
-$container-color: white;
+$container-color: rgb(181, 181, 107);
 
 .bkgsContner{
     display: flex;
@@ -12,8 +12,8 @@ $container-color: white;
 
 .bkgsHeader{
     width:100%;
-
 }
+
 .bkgsTitle{
     width: 80%;
     margin: 2% 10% 2% 10%;
@@ -22,7 +22,6 @@ $container-color: white;
     justify-content: center;
     flex-direction: column;
     align-items:center
-
 }
 
 .noBkngs{
@@ -49,9 +48,10 @@ $container-color: white;
     align-content: center;
     margin: 2% 10% 2% 10%;
     padding: 10px;
-    background-color:#b9a28f;
+    background-color: $container-color;
     border-radius: 20px;
 }
+
 span{
     font-weight:bold;
 }
