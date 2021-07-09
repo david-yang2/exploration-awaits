@@ -6,14 +6,14 @@ import UsersReducer from "./user_reducer"
 import BookingsReducer from "./bookings_reducer"
 import TripsReducer from "./trips_reducer"
 
-const RootReudcer = combineReducers({
+const RootReducer = combineReducers({
     carlistings: CarlistingsReducer,
     session: SessionReducer,
     reviews: ReviewsReducer,
     user: UsersReducer,
     bookings: BookingsReducer,
-    trips: TripsReducer,
+    trips: TripsReducer
 
 });
 
-export default RootReudcer;
+export default RootReducer;

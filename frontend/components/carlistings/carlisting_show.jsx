@@ -64,7 +64,7 @@ class CarlistingShow extends React.Component{
             <div className="showContner">
 
                 
-                <div className="carInteractive">
+                <div className="car-interactive">
 
                     <div className="bkgsCal">
                         {this.props.session.currentUser ?
@@ -107,22 +107,21 @@ class CarlistingShow extends React.Component{
 
                     </div>
 
-                    <div className="reviewContnr">
-
-                        <div className="createReview">
-                            {this.props.session.currentUser ?     
-                                <CreateReview   createReview={this.createReview}
-                                                carlistingId={carlisting.id}
-                                                currentUser = {this.props.session.currentUser}
-                                                />
-                                : 
-                                <div>
-                                    <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
-                                </div>
-                            }
-                                
-                        </div>
-                        <div className="updateReview">
+                    <div className="review-container">
+                        {this.props.session.currentUser ?     
+                            <CreateReview   createReview={this.createReview}
+                                            carlistingId={carlisting.id}
+                                            currentUser = {this.props.session.currentUser}
+                                            />
+                            : 
+                            <div>
+                                <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
+                                <br />
+                                <br />
+                            </div>
+                        }
+                        
+                        <div className="prvsReviewsContnr">
                             <h3>Reviews:</h3>
                             {Object.values(reviews).map(review => 
                                                         <Review review={review}

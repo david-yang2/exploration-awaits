@@ -8,8 +8,6 @@ class CarlistingsIndex extends React.Component{
         this.state={
             mapOptions:{
               center: {lat: 37.7758, lng: -122.435 }, // San Francisco, CA
-            //   center: {lat:38.57283716077039, lng:-109.55545695813444}, // Moab, UT
-            //   center: {lat:37.84755373063942, lng:-119.18447474550449}, // Yosemite Ntnl Park
               zoom: 10
             },
             selectedLoc: "SF"
@@ -48,18 +46,16 @@ class CarlistingsIndex extends React.Component{
         const {carlistings} = this.props
         if (!carlistings || carlistings.length<1) return null;
         return(
-            <div>
-                <div>
-                    <Filter carlistings={carlistings} />
-                </div>
-                <div>
-                    <select value={this.selectedLoc} onChange={this.selectCenter}>
+            <div className="carIndex">
+                <Filter carlistings={carlistings} />
+                <div className="map">
+                    <select className="centerSlct" value={this.selectedLoc} onChange={this.selectCenter}>
                         <option value="SF">San Francisco, CA</option>
                         <option value="MOAB">Moab, UT</option>
                         <option value="Yosemite">Yosemite National Park, CA</option>
                     </select>
-                    {/* <Map carlistings={carlistings}
-                            mapOptions={this.state.mapOptions}/> */}
+                    <Map carlistings={carlistings}
+                            mapOptions={this.state.mapOptions}/>
                 </div>
             </div>
         )

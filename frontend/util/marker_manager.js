@@ -40,7 +40,7 @@ export default class MarkerManager {
         var request = {
             origin: tripStart,
             destination: tripEnd,
-            travelMode: 'DRIVING'
+            travelMode: 'DRIVING',
         };
 
         directionsService.route(request, function(result, status) {

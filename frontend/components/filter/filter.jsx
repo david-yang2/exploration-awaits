@@ -146,21 +146,22 @@ class Filter extends React.Component{
         const {selectedMake, selectedModel, selectedDrivetrain} = this.state
         const carlistings = this.props.carlistings
         return (
-            <div>
-                <form className="show-filters">
+            <div className="carFilter">
+                <form className="filters">
 
                     {/* Make button and checkbox */}
                     <div>
                         <button onClick={() => this.filterListings("make")}>Make</button>
                         <div>
                             {Object.values(this.state.make).map((value,idx) => (
-                                <div key={idx}> 
-                                    <input
+                                <div className="selection" key={idx}> 
+                                    <input 
+                                    className="checkBox"
                                     type="checkbox"
                                     onClick={this.handleSelect("selectedMake",value)}
                                     id={value}
                                     />
-                                    <label for={value}>
+                                    <label className="filterLabel" for={value}>
                                         {value}
                                     </label>
                                 </div>
@@ -173,13 +174,14 @@ class Filter extends React.Component{
                         <button onClick={() => this.filterListings("model")}>Model</button>
                         <div>
                             {Object.values(this.state.model).map((value,idx) => (
-                                <div key={idx}> 
-                                    <input
+                                <div className="selection" key={idx}> 
+                                    <input 
+                                    className="checkBox"
                                     type="checkbox"
                                     onClick={this.handleSelect("selectedModel",value)}
                                     id={value}
                                     />
-                                    <label for={value}>
+                                    <label className="filterLabel" for={value}>
                                         {value}
                                     </label>
                                 </div>
@@ -191,13 +193,14 @@ class Filter extends React.Component{
                         <button onClick={() => this.filterListings("drivetrain")}>Drivetrain</button>
                         <div>
                             {Object.values(this.state.drivetrain).map(value => (
-                                <div key={value}> 
-                                    <input
+                                <div className="selection" key={value}> 
+                                    <input 
+                                    className="checkBox"
                                     type="checkbox"
                                     onClick={this.handleSelect("selectedDrivetrain", value)}
                                     id={value}
                                     />
-                                    <label for={value}>
+                                    <label className="filterLabel" for={value}>
                                         {value}
                                     </label>
                                 </div>
@@ -206,8 +209,8 @@ class Filter extends React.Component{
                     </div>
                     <button onClick={()=>{this.clearFilters()}}>Clear Filters</button>
                 </form> 
-                <div>       
-                    <ul>
+                <div className="allCars">       
+                    <ul className="listCars">
                         {
                         Object.values(carlistings).map((car,idx) => {
                             if (this.noSelectedFilters()) {
@@ -253,7 +256,7 @@ export default Filter;
     //     <div>
     //         {Object.values(this.state.sleeps).map(value => (
     //             <div key={value}> 
-    //                 <input
+    //                 <input className="selection"
     //                 type="range"
     //                 onChange={this.handleSelect("selectedSleeps", value)}
     //                 id={value}

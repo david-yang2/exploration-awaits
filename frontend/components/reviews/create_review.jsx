@@ -36,6 +36,8 @@ class CreateReview extends React.Component{
                     />
                     <input className="createReviewBtn" type="submit" value="Create Review" />
                 </form>
+                <br />
+                <br />
             </div>
         )
     }

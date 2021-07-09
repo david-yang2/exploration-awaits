@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
     resources :carlistings, except: [:new, :edit] do
       resources :reviews, except: [:new, :edit, :show, :update]
-      resources :trips, only: [:show]
+      resources :trips, only: [:index]
     end
-    resources :trips, only: [:index, :create]
+    # resources :trips, only: [:index, :create]
     resources :reviews, only: [:update, :show]
     resources :bookings, only: [:destroy]
     resources :users, except: [:new, :edit] do 

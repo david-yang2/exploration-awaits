@@ -10,7 +10,6 @@ const UsersReducer = (oldState = {}, action) =>{
     let nextState = Object.assign({}, oldState);
     switch (action.type) {
         case ALL_USERS:
-            debugger
             return action.users;
 
         case CURRENT_USER:

@@ -30,7 +30,7 @@ class Login extends React.Component{
     }
 
     useDemoLogin(){
-        this.props.login({username:"Emma", password:"EmmaDemo"})
+        this.props.login({username:"David", password:"DavidDemo"})
         .then(()=> this.props.history.push(`/`));
     }
 
@@ -55,10 +55,10 @@ class Login extends React.Component{
                                 value={this.state.password}
                                 onChange={this.handleInput('password')}
                             />
-                        <div className="loginbtn">
-                            <button onClick={this.handleSubmit}>Login</button>
-                            <button onClick={this.useDemoLogin}>Demo User</button>
-                        </div>
+                            <div className="loginbtn">
+                                <button onClick={this.handleSubmit}>Login</button>
+                                <button onClick={this.useDemoLogin}>Demo User</button>
+                            </div>
                     </form>
                 </div>
             </div>

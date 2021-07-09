@@ -12,7 +12,6 @@ export const getCarlistings = () => {
 // show carlisting
 // GET /api/carlistings/:id
 export const showCarlisting = carlistingID => {
-    debugger
     return $.ajax({
         url: `/api/carlistings/${carlistingID}`,
         method: "GET",
