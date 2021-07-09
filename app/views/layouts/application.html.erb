@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application' %>
 
     
-
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&libraries=places" %>
 
     <% if current_user %>
     <script>
@@ -24,8 +24,6 @@
   </head>
 
   <body>
-  <script src='https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google[:api_key]%>'
-            type='text/javascript'></script>
     <%= yield %>
   </body>
 </html>
