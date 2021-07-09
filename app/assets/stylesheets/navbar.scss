@@ -57,7 +57,7 @@ $font-style: italic;
 .github{
     width:30px;
     height:30px;
-    background-image: url("github_logo.png");
+    background-image: image_url("github_logo.png");
     background-size: 100% 100%;
     background-color:white;
     border-radius: 5px;
@@ -65,7 +65,7 @@ $font-style: italic;
 .linkedin{
     width:32px;
     height:33px;
-    background-image: url("linkedin_logo.png");
+    background-image: image_url("linkedin_logo.png");
     background-size: 100% 100%;
     margin-left:10%;
     border-radius: 5px;
