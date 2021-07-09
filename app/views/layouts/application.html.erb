@@ -9,8 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <script src='https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google[:api_key]%>'
-            type='text/javascript'></script>
+    
 
 
     <% if current_user %>
@@ -25,6 +24,8 @@
   </head>
 
   <body>
+  <script src='https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google[:api_key]%>'
+            type='text/javascript'></script>
     <%= yield %>
   </body>
 </html>
