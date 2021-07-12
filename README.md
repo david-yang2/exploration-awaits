@@ -1,6 +1,9 @@
 # Exploration Awaits
 Want to get away and go on a much needed adventure and visit places many have not been before? Exploration Awaits, a full-stack web applicaiton, offers many capable and comfortable overland rigs that can take you and your family or friends off the beaten path. Users have the option to filter through our car listings and make reservations through the car's show page. Show page displays a calendar component, map of the previous trip as well as reviews for the car. 
 
+### Don't wait for your adventures. Get started here [ExplorationAwaits](https://explorationawaits.herokuapp.com/#)
+<p>&nbsp;</p>
+
 # Technologies
 
 Technologies used in this project include:
