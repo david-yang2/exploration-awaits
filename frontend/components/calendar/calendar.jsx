@@ -19,8 +19,10 @@ class Calendar extends React.Component{
 
     bookDates= (pdate, ddate) => {
         if(!this.props.currentUserId){
+            // notify users if they're not logged in
             alert(`Please log in before making any reservations`)
         } else {
+            // create booking and confirm pickup and dropoff dates with users
         this.props.createBooking({
             car_id: this.props.carlistingId,
             user_id: this.props.currentUserId,
@@ -37,6 +39,7 @@ class Calendar extends React.Component{
     render(){
         return (
             <div className="calendar">
+                {/* Select a range of dates for pick up and drop off */}
                 <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -49,7 +52,7 @@ class Calendar extends React.Component{
                     endDatePlaceholderText="Drop off"
                 />
 
-                {/* onClick will push the dates to bookings model */}
+                {/* onClick will push the selected dates to bookings model */}
                 <button className="reserveBtn" onClick={ () => this.bookDates(
                                             this.state.startDate._d.toLocaleDateString('zh-Hans-CN'),
                                             this.state.endDate._d.toLocaleDateString('zh-Hans-CN')
