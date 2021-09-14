@@ -18,13 +18,20 @@ class Calendar extends React.Component{
     }
 
     bookDates= (pdate, ddate) => {
+        if(!this.props.currentUserId){
+            alert(`Please log in before making any reservations`)
+        } else {
         this.props.createBooking({
             car_id: this.props.carlistingId,
             user_id: this.props.currentUserId,
             pickup_date: pdate,
             dropoff_date: ddate,
         })
-        alert("You're booking is successful!")
+        alert(`You have succesfully booked this car! \n
+                \t Your pickup date is ${pdate}. \n
+                \t Your dropoff date is ${ddate} \n
+                Please click the Bookings tab to see your current reservations.`)
+        }
     }
 
     render(){
