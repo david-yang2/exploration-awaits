@@ -22,16 +22,16 @@ class Login extends React.Component{
     
 
     handleSubmit(e) {
-
+        
         e.preventDefault();
-        // const {history} = this.props;
         this.props.login(this.state)
         .then(()=> this.props.history.push(`/`));
     }
 
     useDemoLogin(){
+        // login with demo account
         this.props.login({username:"David", password:"DavidDemo"})
-        .then(()=> this.props.history.push(`/`));
+        this.props.history.push(`/`)
     }
 
     // remember password validates the length of 6
