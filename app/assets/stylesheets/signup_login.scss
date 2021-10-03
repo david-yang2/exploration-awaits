@@ -10,37 +10,45 @@
 }
 .session-container{
     width:250px;
-    height: 35%;
+    height: 45%;
     display:flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 15%;
+    margin-top: 10%;
     background-color: grey;
     opacity: 70%;
     border-radius: 10px;
     
 }
-.session-header{
-    margin: 5%;
-    height:15%;
-}
+    .session-container > h2{
+        margin: 5%;
+        height:15%;
+    }
 
-.session-form{
-    height: 85%;
-    display: flex; 
-    justify-content: space-evenly;
-    flex-direction: column;
-    margin: 5%;
-}
+    .session-container > form{
+        height: 85%;
+        display: flex; 
+        justify-content: space-evenly;
+        flex-direction: column;
+        margin: 5%;
+    }
+    .session-container > form > button{
+        font-size:18px;
+    }
 
 input {
-    height: 30px;
+    height: 45px;
     width: 100%;
     margin: 2px;
     padding: 5px;
+    font-size:18px
 }
 
-.loginbtn{
+.loginbtn-container{
     display:flex;
     justify-content: space-evenly;
 }
+
+    .loginbtn-container > button{
+        font-size:18px;
+    }
