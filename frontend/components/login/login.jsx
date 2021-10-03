@@ -40,25 +40,25 @@ class Login extends React.Component{
         return(
             <div className="session">
                 <div className="session-container">
-                    <h2 className="session-header"> Please Login!</h2>
-                    <form className="session-form">
-                            <input 
-                                placeholder="Username:"
-                                type="text"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')}
-                            />
+                    <h2> Please Login!</h2>
+                    <form>
+                        <input 
+                            placeholder="Username:"
+                            type="text"
+                            value={this.state.username}
+                            onChange={this.handleInput('username')}
+                        />
 
-                            <input 
-                                placeholder="Password:"
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.handleInput('password')}
-                            />
-                            <div className="loginbtn">
-                                <button onClick={this.handleSubmit}>Login</button>
-                                <button onClick={this.useDemoLogin}>Demo User</button>
-                            </div>
+                        <input 
+                            placeholder="Password:"
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.handleInput('password')}
+                        />
+                        <div className="loginbtn-container">
+                            <button onClick={this.handleSubmit}>Login</button>
+                            <button onClick={this.useDemoLogin}>Demo User</button>
+                        </div>
                     </form>
                 </div>
             </div>
