@@ -7,16 +7,11 @@ $font-style: italic;
     display:flex;
     flex-direction: column;
     border: $border-color;
-    // border-style: $border-style;
     background-image: image_url("homepage.jpeg");
     background-size: 100% 100%;
-    height: 83vh;
     width: 100%;
     margin-top: 5px;
     background-repeat: no-repeat;
-    // display:flex;
-    // justify-content: center;
-    // flex-direction: row;
 }
     .home > h1{
         border: $border-color;
