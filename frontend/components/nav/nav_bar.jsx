@@ -13,8 +13,8 @@ export default ({ currentUser, logout }) => {
     // currentUser ? () : ()
   const display = currentUser ? (
     <div className="welcome-container">
-      <text className="loggedUser"> Hello, {currentUser.username}</text>
-      <button className="logoutbtn" onClick={logout}>Log out</button>
+      <text > Hello, {currentUser.username}</text>
+      <button onClick={logout}>Log out</button>
     </div>
   )
   // : is part of the ternary function
@@ -31,7 +31,7 @@ export default ({ currentUser, logout }) => {
 
   return (
     <header className="header" >
-      <h3 className="header-text">Exploration awaits</h3>
+      <h3>Exploration awaits</h3>
       <div className="header-content">
         <div className="portfolio">
           <a className="github" href='https://github.com/david-yang2'>
