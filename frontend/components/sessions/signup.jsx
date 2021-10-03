@@ -32,26 +32,26 @@ class Signup extends React.Component{
         return(
             <div className="session">
                 <div className="session-container">
-                    <h2 className="session-header"> Create New Account</h2>
-                    <form className="session-form">
-                            <input
-                                placeholder="Username:"
-                                type="text"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')}
-                            />
-                            <input 
-                                placeholder="Email:"
-                                type="text"
-                                value={this.state.email}
-                                onChange={this.handleInput('email')}
-                            />
-                            <input 
-                                placeholder="Password:"
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.handleInput('password')}
-                            />
+                    <h2> Create New Account</h2>
+                    <form>
+                        <input
+                            placeholder="Username:"
+                            type="text"
+                            value={this.state.username}
+                            onChange={this.handleInput('username')}
+                        />
+                        <input 
+                            placeholder="Email:"
+                            type="text"
+                            value={this.state.email}
+                            onChange={this.handleInput('email')}
+                        />
+                        <input 
+                            placeholder="Password:"
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.handleInput('password')}
+                        />
                         <button onClick={this.handleSubmit}>Sign Up</button>
                     </form>
                 </div>
