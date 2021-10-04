@@ -34,14 +34,17 @@ class CarlistingShow extends React.Component{
     }
 
     createReview(newReview){
+        // post review
         this.props.createRigReview(newReview)
     }
 
     createBooking(booking){
+        // post booking
         this.props.createNewBooking(booking)
     }
     
     updateReview(updatedReview){
+        // patch review
         this.props.updateRigReview(updatedReview)
     }
 
@@ -53,42 +56,47 @@ class CarlistingShow extends React.Component{
     }
 
     render(){
+        // deconstruct carlisting, reviews, user, trips from props
         const {carlisting, reviews, user, trips} = this.props;
         if (!carlisting) return null
         var listingId = carlisting.imageIdx
         var imageId = "carlisting".concat(listingId.toString())
         var currentUserId = 0
-
+        
+        // grabbing current user's ID
         this.props.session.currentUser ? currentUserId = this.props.session.currentUser.id : currentUserId =0
+        
         return ( this.propsAreValid() ?
             <div className="showContner">
 
-                
-                <div className="car-interactive">
-
-                    <div className="bkgsCal">
-                        {this.props.session.currentUser ?
-                            <div>
-                                <Calendar createBooking={this.createBooking}
+                <div className="review-container">
+                    {this.props.session.currentUser ?     
+                        <CreateReview   createReview={this.createReview}
                                         carlistingId={carlisting.id}
-                                        currentUserId={this.props.session.currentUser.id}
+                                        currentUser = {this.props.session.currentUser}
                                         />
-                            </div>
-                            :
-                            <div> 
-                                <Calendar />
-                            </div>
-                        }
+                        : 
+                        <div>
+                            <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
+                            <br />
+                            <br />
+                        </div>
+                    }
+                    
+                    <div className="prvsReviewsContnr">
+                        <h3>Reviews:</h3>
+                        {Object.values(reviews).map(review => 
+                                                    <Review review={review}
+                                                    users={user}
+                                                    updateReview = {this.updateReview}
+                                                    key={review.id}
+                                                    currentUserId={currentUserId}
+                                                    />
+                                                    )}
                     </div>
-                    {/* show most recent trip on google maps for this carlisting */}
-                    <div className="idvMap">
-                        <h3> Previous Trip </h3>
-                        <Map trips={trips[0]}
-                                mapOptions={this.state.mapOptions}/>
-                    </div>
+                </div>
 
-    
-                    </div>
+
                 
                 <div className="carFields">
 
@@ -107,32 +115,34 @@ class CarlistingShow extends React.Component{
 
                     </div>
 
-                    <div className="review-container">
-                        {this.props.session.currentUser ?     
-                            <CreateReview   createReview={this.createReview}
-                                            carlistingId={carlisting.id}
-                                            currentUser = {this.props.session.currentUser}
-                                            />
-                            : 
+
+                    <div className="car-interactive">
+                    <div className="bkgsCal">
+                        <h3>Book this overland rig</h3>
+
+                        {/* pass in props if user is logged in otherwise just render calendar component */}
+                        {this.props.session.currentUser ?
                             <div>
-                                <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
-                                <br />
-                                <br />
+                                <Calendar createBooking={this.createBooking}
+                                        carlistingId={carlisting.id}
+                                        currentUserId={this.props.session.currentUser.id}
+                                        />
+                            </div>
+                            :
+                            <div> 
+                                <Calendar />
                             </div>
                         }
-                        
-                        <div className="prvsReviewsContnr">
-                            <h3>Reviews:</h3>
-                            {Object.values(reviews).map(review => 
-                                                        <Review review={review}
-                                                        users={user}
-                                                        updateReview = {this.updateReview}
-                                                        key={review.id}
-                                                        currentUserId={currentUserId}
-                                                        />
-                                                        )}
+                    </div>
+                        {/* show most recent trip on google maps for this carlisting */}
+                        <div className="idvMap">
+                            <h3> Previous Trip </h3>
+                            <Map trips={trips[0]}
+                                    mapOptions={this.state.mapOptions}/>
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
         :
