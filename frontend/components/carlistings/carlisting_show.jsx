@@ -84,7 +84,7 @@ class CarlistingShow extends React.Component{
                     }
                     
                     <div className="prvsReviewsContnr">
-                        <h3>Reviews:</h3>
+                        <div style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews:</div>
                         {Object.values(reviews).map(review => 
                                                     <Review review={review}
                                                     users={user}
