@@ -19,27 +19,20 @@ $review-border-radius: 20px;
 
 }
 
-
-
-.carInfo{
-    display:flex;
-    flex-direction: column;
-    height:51%
-}
-
 .carImgs{
     // transform: scale(1.1);
     display:flex;
     flex-direction:row;
     overflow: scroll;
     margin:2px;
+    height:200px;
 }
 
 .indvImg{
     margin:2px;
 }
 
-.carFields{
+.carInfo{
     border: $border-color;
     border-style: $border-style;
     width: 60%;
@@ -48,15 +41,27 @@ $review-border-radius: 20px;
     padding: 2%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     border-radius: $review-border-radius;
     background-color: $container-color ;
 }
 
-.car-interactive{
-    display:flex;
-    flex-direction: column;
-    width:38%;
-    margin-left:2%;
-    margin-top:10px;
+    .carInfo > h1 {
+        margin-bottom:1%;
+        font-size:35px;
+        text-decoration: underline;
+    }
+
+.bkgsCal > h3 {
+    margin-bottom:1%;
 }
 
+.showMap{
+    width: 100%;
+    height: 30%;
+    margin-top:2%
+}
+    .showMap > div {
+        width: 100%;
+        height: 100%
+    }
