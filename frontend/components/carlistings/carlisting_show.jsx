@@ -97,26 +97,12 @@ class CarlistingShow extends React.Component{
                 </div>
 
 
-                
-                <div className="carFields">
-
-                    <div className ="carInfo">
-                        {/* information for carlisting */}
-                        <div className="carTitle">
-                            <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
-                        </div>
-
-                        {/* images for carlisting */}
-                        <div className="carImgs">
-                            {Images[imageId].map((image,idx) => 
-                                <img className="indvImg" src={image} width="250px" height ="200px"alt='' key={idx}/>)}
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="car-interactive">
+                {/* information for carlisting */}
+                <div className="carInfo">
+                    {/* Car Title*/}
+                    <h1>{carlisting.year} {carlisting.make} {carlisting.model}</h1>
+                    
+                    {/* bookings calendar */}
                     <div className="bkgsCal">
                         <h3>Book this overland rig</h3>
 
@@ -134,19 +120,27 @@ class CarlistingShow extends React.Component{
                             </div>
                         }
                     </div>
-                        {/* show most recent trip on google maps for this carlisting */}
-                        <div className="idvMap">
-                            <h3> Previous Trip </h3>
+
+                    {/* images for carlisting */}
+                    <div className="carImgs">
+                        {Images[imageId].map((image,idx) => 
+                            <img className="indvImg" src={image} width="250px" height ="200px"alt='' key={idx}/>)}
+                    </div>
+
+
+
+                    {/* show most recent trip on google maps for this carlisting */}
+                    <div className="showMap">
+                        <h3> Previous Trip </h3>
+                        <div>
                             <Map trips={trips[0]}
                                     mapOptions={this.state.mapOptions}/>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         :
-            null
+        null
         )
     }
 }
