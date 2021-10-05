@@ -12,31 +12,70 @@ class Calendar extends React.Component{
             endDate: null,
             bookStartDate: null,
             bookEndDate: null,
+            reservation: null
         }
+
         this.bookDates = this.bookDates.bind(this)
+        this.closeModal = this.closeModal.bind(this)
         
     }
 
     bookDates= (pdate, ddate) => {
         if(!this.props.currentUserId){
             // notify users if they're not logged in
-            alert(`Please log in before making any reservations`)
+            this.setState({reservation: false})
         } else {
             // create booking and confirm pickup and dropoff dates with users
-        this.props.createBooking({
-            car_id: this.props.carlistingId,
-            user_id: this.props.currentUserId,
-            pickup_date: pdate,
-            dropoff_date: ddate,
-        })
-        alert(`You have succesfully booked this car! \n
-                \t Your pickup date is ${pdate}. \n
-                \t Your dropoff date is ${ddate} \n
-                Please click the Bookings tab to see your current reservations.`)
+            this.props.createBooking({
+                car_id: this.props.carlistingId,
+                user_id: this.props.currentUserId,
+                pickup_date: pdate,
+                dropoff_date: ddate,
+            })
+            this.setState({reservation: true})
         }
     }
 
+    closeModal(){
+        this.setState({reservation: null})
+    }
+
     render(){
+
+        // reservation modal alerting users to either log in or their reservation confirmation
+        let reserveModal;
+
+        if (this.state.reservation === null){
+
+            reserveModal = (<div></div>)
+
+        } else if (this.state.reservation === true){
+
+            reserveModal = (<div className="resModal">
+                                <div>
+                                    <button onClick={() => this.closeModal()}> x </button>
+                                </div>  
+                                <body>
+                                You have succesfully booked this car!<br />
+                                Your pickup date is {this.state.startDate._d.toLocaleDateString('zh-Hans-CN')}.<br />
+                                Your dropoff date is {this.state.endDate._d.toLocaleDateString('zh-Hans-CN')}.<br />
+                                Please click the Bookings tab to see your current reservations.<br />
+                                </body>
+                            </div>)
+
+        } else if (this.state.reservation === false) {
+
+            reserveModal = (<div className="resModal">
+                                <div>
+                                    <button onClick={() => this.closeModal()}> x </button>
+                                </div>  
+                                <div>
+                                Please log in before making any reservations
+                                </div>
+                            </div>)
+        }
+
+        
         return (
             <div className="calendar">
                 {/* Select a range of dates for pick up and drop off */}
@@ -57,6 +96,8 @@ class Calendar extends React.Component{
                                             this.state.startDate._d.toLocaleDateString('zh-Hans-CN'),
                                             this.state.endDate._d.toLocaleDateString('zh-Hans-CN')
                                         )}> Reserve </button>
+
+                {reserveModal}
             </div>
 
 
