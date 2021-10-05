@@ -1,7 +1,50 @@
 
 .calendar{
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: row;
+    align-items:center;
     margin-bottom:10px;
 }
+
+.reserveBtn{
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    margin:0 0 0 20px;
+}
+
+.DateInput > input {
+    height:20px
+}
+
+.resModal{
+    background-color: olive;
+
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width:60%;
+
+    font-size:20px;
+
+    z-index: 1;
+    padding: 0 3% 3% 3%;
+    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+    .resModal > div{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+        .resModal > div > button{
+            background-color: black;
+            color:white
+        }
