@@ -1,5 +1,5 @@
 import React from "react"
-
+import Avatar from "../avatar/avatar"
 
 class CreateReview extends React.Component{
     constructor(props){
@@ -26,18 +26,21 @@ class CreateReview extends React.Component{
     }
     
     render(){
+
+        const {currentUser} = this.props
         return(
             <div className="createReview">
-                <h3>Hi {this.props.currentUser.username}, </h3>
+                <div>
+                    <Avatar username={currentUser.username} />
+                    <h3>Hi {currentUser.username}, </h3>
+                </div>
                 <form className="createForm" onSubmit={this.handleSubmit}>
                     <textarea className="createReviewArea" value={this.state.body}
                             placeholder="Would you like to review this rig?"
                             onChange = {this.update('body')}
                     />
-                    <input className="createReviewBtn" type="submit" value="Create Review" />
+                    <input type="submit" value="Create Review" />
                 </form>
-                <br />
-                <br />
             </div>
         )
     }
