@@ -59,7 +59,7 @@ class Map extends React.Component{
         return (
           
           // this ref gives us access to the map dom node
-          <div>
+          <div className="mapComponent">
             <div ref={ map => this.mapNode = map } id='map-container' />
             {/* <div id="directions-panel" ></div> */}
 
