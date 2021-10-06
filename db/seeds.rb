@@ -67,7 +67,8 @@
         longitude: -122.46593720078,
         latitude: 37.781051952305376,
         location: "San Francisco",
-        imageIdx: 0
+        imageIdx: 0,
+        coverImage: "/rigs/carlisting0/image1.png"
     )
 
     carlisting2 = Carlisting.create(
@@ -90,7 +91,8 @@
         longitude: -122.4540067359941,
         latitude: 37.76331046346102,
         location: "San Francisco",
-        imageIdx: 1
+        imageIdx: 1,
+        coverImage: "/rigs/carlisting1/image1.png"
     )
 
 
@@ -114,7 +116,8 @@
         longitude: -122.46712605312656,
         latitude: 37.72362204902285, 
         location: "San Francisco",
-        imageIdx: 2
+        imageIdx: 2,
+        coverImage: "/rigs/carlisting2/image1.png"
         
     )
 #https://www.outdoorsy.com/rv-rental/los-angeles_or/2018_jayco_unlimited_199216-listing?address=California&date%5Bfrom%5D=2021-06-06&date%5Bto%5D=2021-06-30&from=2021-06-06&to=2021-06-30
@@ -138,7 +141,8 @@
         longitude: -109.54008897222319,
         latitude: 38.5699006469305, 
         location: "Moab",
-        imageIdx: 3
+        imageIdx: 3,
+        coverImage: "/rigs/carlisting0/image3.png"
     )
 #https://www.outdoorsy.com/rv-rental/memphis_tn/1998_toyota_4runner_93435-listing?address=California&date%5Bfrom%5D=2021-06-06&date%5Bto%5D=2021-06-30&from=2021-06-06&to=2021-06-30
     carlisting5 = Carlisting.create(
@@ -161,7 +165,8 @@
         longitude: -122.47982899521146,
         latitude: 337.780898716304634, 
         location: "San Francisco",
-        imageIdx: 4
+        imageIdx: 4,
+        coverImage: "/rigs/carlisting0/image4.png"
     )
 #https://www.outdoorsy.com/rv-rental/denver_co/2009_four-wheel-campers_grandby_196304-listing
     carlisting6 = Carlisting.create(
@@ -184,7 +189,8 @@
         longitude: -109.56141789784827,
         latitude: 38.58305232880615, 
         location: "Moab",
-        imageIdx: 5
+        imageIdx: 5,
+        coverImage: "/rigs/carlisting0/image5.png"
     )
 
     #https://www.outdoorsy.com/rv-rental/ogden_ut/2020_overland_other_201893-listing?address=California&date%5Bfrom%5D=2021-06-06&date%5Bto%5D=2021-06-30&from=2021-06-06&to=2021-06-30
@@ -208,7 +214,8 @@
         longitude: -109.53772862747374,
         latitude: 38.57681229015863, 
         location: "Moab",
-        imageIdx: 6
+        imageIdx: 6,
+        coverImage: "/rigs/carlisting0/image6.png"
     )
 
     #https://www.outdoorsy.com/rv-rental/boulder_co/1994___208061-listing?address=California&date%5Bfrom%5D=2021-06-06&date%5Bto%5D=2021-06-30&from=2021-06-06&to=2021-06-30
@@ -232,7 +239,8 @@
         longitude: -119.54191896059692,
         latitude: 37.92800251017967, 
         location: "Yosemite",
-        imageIdx: 7
+        imageIdx: 7,
+        coverImage: "/rigs/carlisting7/image1.png"
     )
 
     #https://www.outdoorsy.com/rv-rental/sacramento_ca/2020_smittybilt_gen-2-xl_207497-listing
@@ -256,7 +264,8 @@
         longitude: -119.61085283021924,
         latitude: 37.89333502993687, 
         location: "Yosemite",
-        imageIdx: 8
+        imageIdx: 8,
+        coverImage: "/rigs/carlisting8/image1.png"
     )
 
     #https://4xpedition.com/equipment/off-road-vehicles/subaru-outback-overland-road-warrior/
@@ -280,7 +289,8 @@
         longitude:  -122.47536579934378,
         latitude: 37.713030512148634,
         location: "San Francisco",
-        imageIdx: 9
+        imageIdx: 9,
+        coverImage: "/rigs/carlisting0/image9.png"
     )
 
 
