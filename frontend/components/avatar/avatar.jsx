@@ -23,10 +23,10 @@ class Avatar extends React.Component{
         const olive = ['G', 'H', 'I']                               //"#808000"
         const emeraldgreen = ['D', "Z", 'F']                                   //"#00C957"
         const red =   ['A', 'B', 'C', 'Y']                           //"#CD0000"
-        const orange = ['J', 'K', 'L', "E"]                            //"#FFA500"
+        const orange = ['J', 'K','O' , "E"]                            //"#FFA500"
         const maroon =  ['S', 'T', 'U']                                 //"#800000"
-        const violet = ['P', 'Q', 'R']                                 //"#D02090"
-        const royalblue = [ 'M', 'N', 'O']                            //"#4876FF"
+        const violet = ['P', 'Q','N']                                 //"#D02090"
+        const royalblue = [ 'M', 'R','L' ]                            //"#4876FF"
         const coral = ['V', 'W', 'X']                                  //"#FF7F50"
 
         const colorHash = {
