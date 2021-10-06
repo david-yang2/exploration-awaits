@@ -104,7 +104,7 @@ class CarlistingShow extends React.Component{
                     
                     {/* bookings calendar */}
                     <div className="bkgsCal">
-                        <h3>Book this overland rig</h3>
+                        <h3>Would you like to book this overland rig?</h3>
 
                         {/* pass in props if user is logged in otherwise just render calendar component */}
                         {this.props.session.currentUser ?
