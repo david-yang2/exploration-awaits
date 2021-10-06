@@ -7,17 +7,29 @@ $background-color:#edfee6;
     border-style: $border-style;
     width: 100%;
     margin-top: 10px;
+    padding:2%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-color: $background-color;
 
 }
 
+
+.carFilter{
+    width:65%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+
 .map{
     border: $border-color;
     border-style: $border-style;
-    width:600px;
+    width:30%;
+    height: 90%
 }
 
 .centerSlct{
