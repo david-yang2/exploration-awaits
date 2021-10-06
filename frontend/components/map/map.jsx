@@ -42,7 +42,7 @@ class Map extends React.Component{
             // content
             `<div>
               <h3>${car.year} ${car.make} ${car.model}</h3>
-              <img src='rigs/carlisting${car.imageIdx}/image1.jpeg' width="150px" height ="150px"alt='' />
+              <img src='rigs/carlisting${car.imageIdx}/image1.png' width="150px" height ="150px"alt='' />
             </div>`)
         )
       : 
