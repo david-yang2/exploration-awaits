@@ -6,7 +6,7 @@ const OverlandRig = (props) => {
         <div className="rigContainer">
             {/* link to show page when image is clicked */}
             <a href={`#/carlistings/${props.rig.id}`}>
-                <img  src={`rigs/carlisting${id}/image1.jpeg`} alt='' />
+                <img  src={`rigs/carlisting${id}/image1.png`} alt='' />
             </a>
             <br/>
             <div>
