@@ -35,7 +35,6 @@ class Bookings extends React.Component{
 
     render(){
         const {bookings, session, carlistings, user} = this.props
-
         return(
             <div className="bookingsContainer">
                 <div className="bookingsHeader">
@@ -59,6 +58,13 @@ class Bookings extends React.Component{
                         Object.values(bookings).map(booking=>
                             <div className="individualBooking" key={booking.id}>
                                 <div className="bookingImage">
+                                    
+                                    {Object.values(carlistings).map(carlisting => 
+                                        {if (carlisting.id === booking.car_id) {
+                                            return(
+                                                <img src={carlisting.coverImage} alt ='' />
+                                            )
+                                        }})}
                                     
                                 </div>
                                 <div className="bookingInfo">
