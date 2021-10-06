@@ -25,6 +25,6 @@ html, body, #root, .app{
     height: 100%;
 }
 
-.home, .carIndex, .session, .bkgsContner, .showContner{
+.home, .carIndex, .session, .bookingsContainer, .showContner{
     height: 87vh;
 }
