@@ -156,10 +156,10 @@ class Filter extends React.Component{
                             {Object.values(this.state.make).map((value,idx) => (
                                 <div className="selection" key={idx}> 
                                     <input 
-                                    className="checkBox"
-                                    type="checkbox"
-                                    onClick={this.handleSelect("selectedMake",value)}
-                                    id={value}
+                                        className="checkBox"
+                                        type="checkbox"
+                                        onClick={this.handleSelect("selectedMake",value)}
+                                        id={value}
                                     />
                                     <label className="filterLabel" for={value}>
                                         {value}
@@ -215,22 +215,18 @@ class Filter extends React.Component{
                         Object.values(carlistings).map((car,idx) => {
                             if (this.noSelectedFilters()) {
                                 return(
-                                    <div key={idx}>
                                         <OverlandRig rig={car} 
                                                     key={idx}
                                                     photoidx={idx}
                                         />
-                                    </div>
-                                )
+                                    )
                             } else if (this.areFiltersSelected(car.make, car.model, car.drivetrain)) {
                                             return (
-                                                <div key={idx}>
-                                                    <OverlandRig rig={car} 
-                                                                key={idx}
-                                                                photoidx={idx}
-                                                    />
-                                                </div>
-                                            )   
+                                                        <OverlandRig rig={car} 
+                                                                    key={idx}
+                                                                    photoidx={idx}
+                                                        />
+                                                    )   
                                         }
                         })}
                     
