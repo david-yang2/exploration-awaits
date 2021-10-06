@@ -1,31 +1,26 @@
 
 $background-color:#edfee6;
-$container-color: rgb(181, 181, 107);
+$container-color: rgba(181, 181, 107, 0.776);
 
-.bkgsContner{
+.bookingsContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: $background-color;
+    overflow: hidden;
+    justify-content: space-evenly;
 }
 
-.bkgsHeader{
+.bookingsHeader{
     width:100%;
-}
-
-.bkgsTitle{
-    width: 80%;
-    margin: 2% 10% 2% 10%;
-    font-size: 15px;
-    display: flex;
-    justify-content: center;
+    display: flex; 
     flex-direction: column;
-    align-items:center
+    align-items: center;
+    text-align: center;
+    padding-top: 2.5%
 }
 
-.noBkngs{
-    align-content: center;
-}
+    .bookingsHeader > div > h
 
 .linkToRigs{
     padding:20px;
@@ -34,28 +29,82 @@ $container-color: rgb(181, 181, 107);
     font-size: 15px;
 }
 
-.bkgsItemContner{
-    width:100%
-}
-
-.bkgsItem{
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    margin: 2% 10% 2% 10%;
-    padding: 10px;
+.bookingsItemContainer{
     background-color: $container-color;
-    border-radius: 20px;
+    height:80%;
+    width:90%;
+    overflow-y: scroll;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+
 }
 
-span{
-    font-weight:bold;
+.individualBooking{
+    padding:2%;
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    width:90%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-.bkgsBtn{
-    background-color: rgb(249, 138, 138);
-    font-size: 10px;
+.bookingImage{
+    width:20%;
 }
+
+.bookingInfo{
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+
+    .bookingDetails{
+        display:flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        width:100%;
+
+    }
+
+        .pickup, .dropoff{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width:45%;
+            margin-bottom:2%;
+        }
+
+            .pickup>div:first-child, .dropoff>div:first-child {
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom:10px;
+            }
+
+            .pickup>div:nth-child(2), .dropoff>div:nth-child(2){
+                font-size: 20px;
+            }
+
+        .bookingDetails > button {
+            background-color: rgb(249, 138, 138);
+            font-size: 10px;
+            width:10%;
+            height:20px;
+        }
+
+    .ownerInfo{
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        font-size:15px
+    }
+
+        .ownerInfo > div:first-child{
+            width:30%;
+        }
