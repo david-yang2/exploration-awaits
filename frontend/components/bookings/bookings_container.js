@@ -4,23 +4,18 @@ import {fetchBookings, removeBooking} from "../../actions/bookings_actions"
 import { fetchCarlistings } from "../../actions/carlistings_actions"
 import {fetchAllUsers} from "../../actions/user_actions"
 
-const mapStateToProps = (state, ownProps) => {
-    return{
+const mapStateToProps = (state, ownProps) => ({
     bookings: state.bookings,
     session: state.session,
     user: state.user,
     carlistings: state.carlistings
-}}
+    })
 
-const mapDispatchToProps = dispatch => {
-    return{
+const mapDispatchToProps = dispatch => ({
     fetchBookings: id => dispatch(fetchBookings(id)),
     removeBooking: booking => dispatch(removeBooking(booking)),
     fetchCarlistings: () => dispatch(fetchCarlistings()),
     fetchAllUsers: () => dispatch(fetchAllUsers())
-    }
-    
-    
-}
+    })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bookings)

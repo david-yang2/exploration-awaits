@@ -35,41 +35,54 @@ class Bookings extends React.Component{
 
     render(){
         const {bookings, session, carlistings, user} = this.props
+
         return(
-            <div className="bkgsContner">
-                <div className="bkgsHeader">
+            <div className="bookingsContainer">
+                <div className="bookingsHeader">
                     {!bookings || bookings.length<1 ? 
-                            <div className="bkgsTitle">
-                                <h2 className="noBkngs">Looks like you do not have any upcoming reservations. Would you like to reserve one of our Overland Rigs?</h2>
+                            <div>
+                                <h1 >Looks like you do not have any upcoming bookings. Would you like to reserve one of our Overland Rigs?</h1>
                                 <Link className="linkToRigs" to="/rigs">Check out our overland rigs</Link>
                             </div>
 
-                        :   <div className="bkgsTitle">
-                                <h2>Here is a list of your upcoming reservations!</h2>
-                                <h5>Please contact the owner, if you have any questions regarding your reservation.</h5>
+                        :   <div>
+                                <h1>Here is a list of your upcoming bookings!</h1>
+                                <h3>Please contact the owner, if you have any questions regarding your booking.</h3>
                             </div>}
                 </div>
-                <div className="bkgsItemContner">
+
+
+                <div className="bookingsItemContainer">
                     {this.propsAreEmpty() ? 
                         null 
                     :
                         Object.values(bookings).map(booking=>
-                            <div className="bkgsItem" key={booking.id}>
-                                <text>
-                                    <span>Owner</span>: {this.getCarOwnersName(booking.car_id)[0]} 
-                                    <br />
-                                    <span>Contact information:</span> {this.getCarOwnersName(booking.car_id)[1]}
-                                </text>
-                                <div>
-                                    <h3>
-                                        {/* convert date from "yyyy-mm-dd" to "DOW mon dd yy" */}
-                                        Pick Up:    {new Date(booking.pickup_date).toDateString()} 
-                                    </h3>
-                                    <h3>
-                                        Drop Off:     {new Date(booking.dropoff_date).toDateString()}
-                                    </h3>
+                            <div className="individualBooking" key={booking.id}>
+                                <div className="bookingImage">
+                                    
                                 </div>
-                                <button className="bkgsBtn" onClick={()=>this.deleteBooking(booking)}>Cancel Reservation</button>
+                                <div className="bookingInfo">
+                                    <div className="bookingDetails">
+                                            <div className="pickup">
+                                                {/* convert date from "yyyy-mm-dd" to "DOW mon dd yy" */}
+                                                <div>Pick Up:</div>
+                                                <div> 
+                                                    {new Date(booking.pickup_date).toDateString()}
+                                                </div>  
+                                            </div>
+                                            <div className='dropoff'>
+                                                <div>Drop Off:</div>
+                                                <div>
+                                                    {new Date(booking.dropoff_date).toDateString()}
+                                                </div>
+                                            </div>
+                                            <button onClick={()=>this.deleteBooking(booking)}>Cancel</button>
+                                    </div>
+                                    <div className="ownerInfo">
+                                        <div>Owner: {this.getCarOwnersName(booking.car_id)[0]} </div>
+                                        <div>Contact information: {this.getCarOwnersName(booking.car_id)[1]}</div>
+                                    </div>
+                                </div>
                             </div>
                         )}
                 </div>
