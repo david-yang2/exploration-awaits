@@ -1,4 +1,13 @@
 class Carlisting < ApplicationRecord
+    #validation
+    DRIVE_TRAIN = [
+        "2WD",
+        "4WD",
+        "AWD"
+    ]
+    validates :drivetrain, inclusion: DRIVE_TRAIN
+
+    #associations
     has_many( :trips, {
         primary_key: :id,
         foreign_key: :car_id,
