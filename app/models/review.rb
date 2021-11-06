@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-    validates: review_format
+    validate :review_format
 
     def review_format
         if body.length < 5
