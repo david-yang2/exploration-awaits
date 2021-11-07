@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-
   #POST   /api/users
   def create
     @user = User.new(user_params)

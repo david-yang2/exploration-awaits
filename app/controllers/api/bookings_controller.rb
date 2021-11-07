@@ -38,22 +38,3 @@ class Api::BookingsController < ApplicationController
     end
 
 end
-
-
-
-    # #GET    /api/bookings/:id
-    # def show
-    #     @booking = Booking.find(params[:id])
-    # end
-
-
-    # #PATCH  /api/bookings/:id
-    # def update
-    #     @booking = Booking.find(params[:id])
-
-    #     if @booking.update(booking_params)
-    #         return
-    #     else 
-    #         render json: @booking.errors.full_messages, status: 422
-    #     end
-    # end

@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-
+    skip_before_action :verify_authenticity_token 
     #GET    /api/carlistings/:carlisting_id/reviews
     def index
         @carlisting = Carlisting.find(params[:carlisting_id])

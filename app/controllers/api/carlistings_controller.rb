@@ -1,5 +1,6 @@
 class Api::CarlistingsController < ApplicationController
     #GET    /api/carlistings 
+    skip_before_action :verify_authenticity_token  
     def index
         @carlistings = Carlisting.all
     end
@@ -12,7 +13,6 @@ class Api::CarlistingsController < ApplicationController
     #POST   /api/carlistings
     def create
         @carlisting = Carlisting.new(carlisting_params)
-
         if @carlisting.save
             return
         else 
@@ -46,6 +46,6 @@ class Api::CarlistingsController < ApplicationController
     def carlisting_params
         params.require(:carlisting).permit(:owner_id, :year, :make, :model, :price, :cartype, :drivetrain,
                                         :transmission, :tripcapacity, :seats, :sleeps, :lockers, :rooftoptent,
-                                        :shower, :kitchenset, :fridge, :longitude, :latitude, :location, :coverImage)
+                                        :shower, :kitchenset, :fridge, :longitude, :latitude, :location,:imageIdx, :coverImage)
     end
 end
