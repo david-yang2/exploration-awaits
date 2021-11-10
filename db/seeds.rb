@@ -356,30 +356,17 @@
     booking1 = Booking.create(
         car_id: carlisting1.id,
         user_id: user1.id,
-        pickup_date: "2021-10-02",
-        dropoff_date: "2021-10-06",
+        pickup_date: "2021-12-02",
+        dropoff_date: "2021-12-06",
     )
 
     booking2 = Booking.create(
         car_id: carlisting2.id,
         user_id: user1.id,
-        pickup_date: "2021-10-12",
-        dropoff_date: "2021-10-22",
+        pickup_date: "2022-1-12",
+        dropoff_date: "2022-1-22",
     )
 
-    booking3 = Booking.create(
-        car_id: carlisting2.id,
-        user_id: user1.id,
-        pickup_date: "2021-12-10",
-        dropoff_date: "2021-12-18",
-    )
-
-    booking4 = Booking.create(
-        car_id: carlisting3.id,
-        user_id: user1.id,
-        pickup_date: "2022/01/8",
-        dropoff_date: "2022-01-16",
-    )
 
 # Trips
 
