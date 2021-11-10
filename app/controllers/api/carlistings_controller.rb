@@ -1,6 +1,5 @@
 class Api::CarlistingsController < ApplicationController
     #GET    /api/carlistings 
-    skip_before_action :verify_authenticity_token  
     def index
         @carlistings = Carlisting.all
     end

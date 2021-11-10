@@ -5,6 +5,7 @@ class Api::SessionsController < ApplicationController
       if @user.nil?
         render json: ['Nope. Wrong credentials!'], status: 401
       else
+        puts @user.username
         login!(@user)
         render 'api/users/show';
       end
@@ -14,5 +15,6 @@ class Api::SessionsController < ApplicationController
       logout!
       render json: { message: 'Logout successful.' }
     end
-  end
-  
+
+end
+

@@ -40,7 +40,7 @@ class CarlistingsIndex extends React.Component{
             mapOptions.center = {lat:37.82803170486619, lng:-119.52641075842395}
             this.setState({ mapOptions,
                             selectedLoc: value})}
-        }
+    }
      
     render(){
         const {carlistings} = this.props

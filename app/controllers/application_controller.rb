@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    # # This will be on the assessment
-##
+    skip_before_action :verify_authenticity_token 
   
     # make these methods available from within the views
     helper_method :current_user, :logged_in?

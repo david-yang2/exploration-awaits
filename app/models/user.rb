@@ -5,7 +5,10 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true
-  
+    validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
+    #URI::MailTo::EMAIL_REGEXP
+    #=> /\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/
+
     # This allows us to run methods before running validations
     # In this case, we need to have a session_token when a user is first created
     after_initialize :ensure_session_token
