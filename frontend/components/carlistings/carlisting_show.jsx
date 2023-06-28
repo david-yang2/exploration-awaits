@@ -68,33 +68,7 @@ class CarlistingShow extends React.Component{
         
         return ( this.propsAreValid() ?
             <div className="showContner">
-
-                <div className="review-container">
-                    {this.props.session.currentUser ?     
-                        <CreateReview   createReview={this.createReview}
-                                        carlistingId={carlisting.id}
-                                        currentUser = {this.props.session.currentUser}
-                                        />
-                        : 
-                        <div>
-                            <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
-                            <br />
-                            <br />
-                        </div>
-                    }
-                    
-                    <div className="prvsReviewsContnr">
-                        <div style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews:</div>
-                        {Object.values(reviews).map(review => 
-                                                    <Review review={review}
-                                                    users={user}
-                                                    updateReview = {this.updateReview}
-                                                    key={review.id}
-                                                    currentUserId={currentUserId}
-                                                    />
-                                                    )}
-                    </div>
-                </div>
+ 
 
 
                 {/* information for carlisting */}
@@ -121,21 +95,52 @@ class CarlistingShow extends React.Component{
                         }
                     </div>
 
+                    
+
                     {/* images for carlisting */}
                     <div className="carImgs">
                         {Images[imageId].map((image,idx) => 
                             <img className="indvImg" src={image} width="250px" height ="200px"alt='' key={idx}/>)}
                     </div>
 
+                </div>
 
 
-                    {/* show most recent trip on google maps for this carlisting */}
-                    <div className="showMap">
-                        <h3> Previous Trip </h3>
-                        <div>
-                            <Map trips={trips[0]}
-                                    mapOptions={this.state.mapOptions}/>
+                {/* Reviews for specific car listing */}
+                <div className="review-container">
+                        {this.props.session.currentUser ?     
+                            <CreateReview   createReview={this.createReview}
+                                            carlistingId={carlisting.id}
+                                            currentUser = {this.props.session.currentUser}
+                                            />
+                            : 
+                            <div>
+                                <h2>Please Login/SignUp to make a reservation or leave a comment</h2>
+                                <br />
+                                <br />
+                            </div>
+                        }
+                        
+                        <div className="prvsReviewsContnr">
+                            <div style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews:</div>
+                            {Object.values(reviews).map(review => 
+                                                        <Review review={review}
+                                                        users={user}
+                                                        updateReview = {this.updateReview}
+                                                        key={review.id}
+                                                        currentUserId={currentUserId}
+                                                        />
+                                                        )}
                         </div>
+                </div>
+
+                {/* show most recent trip on google maps for this carlisting */}
+
+                <div className="showMap">
+                    <h3> Previous Trip </h3>
+                    <div>
+                        <Map trips={trips[0]}
+                                mapOptions={this.state.mapOptions}/>
                     </div>
                 </div>
             </div>

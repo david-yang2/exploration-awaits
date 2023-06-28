@@ -5116,6 +5116,25 @@ var CarlistingShow = /*#__PURE__*/function (_React$Component) {
       return this.propsAreValid() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "showContner"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "carInfo"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, carlisting.year, " ", carlisting.make, " ", carlisting.model), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "bkgsCal"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Would you like to book this overland rig?"), this.props.session.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_calendar_calendar__WEBPACK_IMPORTED_MODULE_3__.default, {
+        createBooking: this.createBooking,
+        carlistingId: carlisting.id,
+        currentUserId: this.props.session.currentUser.id
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_calendar_calendar__WEBPACK_IMPORTED_MODULE_3__.default, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "carImgs"
+      }, _public_images__WEBPACK_IMPORTED_MODULE_4__[imageId].map(function (image, idx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          className: "indvImg",
+          src: image,
+          width: "250px",
+          height: "200px",
+          alt: "",
+          key: idx
+        });
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "review-container"
       }, this.props.session.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviews_create_review__WEBPACK_IMPORTED_MODULE_2__.default, {
         createReview: this.createReview,
@@ -5138,30 +5157,11 @@ var CarlistingShow = /*#__PURE__*/function (_React$Component) {
           currentUserId: currentUserId
         });
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "carInfo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, carlisting.year, " ", carlisting.make, " ", carlisting.model), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "bkgsCal"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Would you like to book this overland rig?"), this.props.session.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_calendar_calendar__WEBPACK_IMPORTED_MODULE_3__.default, {
-        createBooking: this.createBooking,
-        carlistingId: carlisting.id,
-        currentUserId: this.props.session.currentUser.id
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_calendar_calendar__WEBPACK_IMPORTED_MODULE_3__.default, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "carImgs"
-      }, _public_images__WEBPACK_IMPORTED_MODULE_4__[imageId].map(function (image, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-          className: "indvImg",
-          src: image,
-          width: "250px",
-          height: "200px",
-          alt: "",
-          key: idx
-        });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "showMap"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, " Previous Trip "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_map_map__WEBPACK_IMPORTED_MODULE_5__.default, {
         trips: trips[0],
         mapOptions: this.state.mapOptions
-      }))))) : null;
+      })))) : null;
     }
   }]);
 
