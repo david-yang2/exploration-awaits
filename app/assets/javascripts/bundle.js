@@ -5135,6 +5135,11 @@ var CarlistingShow = /*#__PURE__*/function (_React$Component) {
           key: idx
         });
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "showMap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, " Previous Trip "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_map_map__WEBPACK_IMPORTED_MODULE_5__.default, {
+        trips: trips[0],
+        mapOptions: this.state.mapOptions
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "review-container"
       }, this.props.session.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviews_create_review__WEBPACK_IMPORTED_MODULE_2__.default, {
         createReview: this.createReview,
@@ -5156,11 +5161,6 @@ var CarlistingShow = /*#__PURE__*/function (_React$Component) {
           key: review.id,
           currentUserId: currentUserId
         });
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "showMap"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, " Previous Trip "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_map_map__WEBPACK_IMPORTED_MODULE_5__.default, {
-        trips: trips[0],
-        mapOptions: this.state.mapOptions
       })))) : null;
     }
   }]);

@@ -104,7 +104,15 @@ class CarlistingShow extends React.Component{
                     </div>
 
                 </div>
+                {/* show most recent trip on google maps for this carlisting */}
 
+                <div className="showMap">
+                    <h3> Previous Trip </h3>
+                    <div>
+                        <Map trips={trips[0]}
+                                mapOptions={this.state.mapOptions}/>
+                    </div>
+                </div>
 
                 {/* Reviews for specific car listing */}
                 <div className="review-container">
@@ -134,15 +142,7 @@ class CarlistingShow extends React.Component{
                         </div>
                 </div>
 
-                {/* show most recent trip on google maps for this carlisting */}
 
-                <div className="showMap">
-                    <h3> Previous Trip </h3>
-                    <div>
-                        <Map trips={trips[0]}
-                                mapOptions={this.state.mapOptions}/>
-                    </div>
-                </div>
             </div>
         :
         null
