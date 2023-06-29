@@ -30,6 +30,7 @@ class CreateReview extends React.Component{
         const {currentUser} = this.props
         return(
             <div className="createReview">
+                <hi style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews</hi>
                 <div>
                     <Avatar username={currentUser.username} />
                     <h3>Hi {currentUser.username}, </h3>

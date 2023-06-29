@@ -107,7 +107,7 @@ class CarlistingShow extends React.Component{
                 {/* show most recent trip on google maps for this carlisting */}
 
                 <div className="showMap">
-                    <h3> Previous Trip </h3>
+                    <h1> Most Recent Trip </h1>
                     <div>
                         <Map trips={trips[0]}
                                 mapOptions={this.state.mapOptions}/>
@@ -130,7 +130,7 @@ class CarlistingShow extends React.Component{
                         }
                         
                         <div className="prvsReviewsContnr">
-                            <div style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews:</div>
+                            {/* <div style={{fontSize: "30px", fontWeight:"bold", margin:"5px 0 5px 0"}}>Reviews:</div> */}
                             {Object.values(reviews).map(review => 
                                                         <Review review={review}
                                                         users={user}
