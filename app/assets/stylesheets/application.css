@@ -28,3 +28,19 @@ html, body, #root, .app{
 .home, .carIndex, .session, .bookingsContainer{
     height: 87vh;
 }
+
+/* for smart phones */
+@media screen and (max-width: 767px){ 
+
+}
+
+/* for tablets */
+@media only screen and (max-width: 768) and (min-width:970){ 
+
+}
+
+
+/* for laptops/desktops */ 
+@media screen and (min-width:971){
+    
+}
